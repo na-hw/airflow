@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
 import { Vazirmatn } from 'next/font/google';
 import Script from 'next/script';
 import '../globals.css';
@@ -9,7 +9,10 @@ import { SITE_CONFIG } from '@/constants';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { routing, type Locale } from '@/i18n/routing';
 import { LOCALE_DIR } from '@/i18n/direction';
+import { BCP47 } from '@/i18n/bcp47';
+import { absoluteUrl, alternatesFor } from '@/lib/seo';
 import ScrollToTop from '@/components/shared/ScrollToTop/ScrollToTop';
+import StructuredData from '@/components/shared/StructuredData/StructuredData';
 import WhatsAppButton from '@/components/shared/WhatsAppButton/WhatsAppButton';
 import Header from '@/components/layout/Header/Header';
 import Footer from '@/components/layout/Footer/Footer';
@@ -25,34 +28,46 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export const metadata: Metadata = {
-  title: {
-    default: `${SITE_CONFIG.name} | ${SITE_CONFIG.tagline}`,
-    template: `%s | ${SITE_CONFIG.name}`,
-  },
-  description: SITE_CONFIG.description,
-  keywords: ['HVAC', 'دریچه هوا', 'دمپر', 'تهویه مطبوع', 'ایرفلو سیستم', 'توزیع هوا', 'سیستم تهویه'],
-  authors: [{ name: SITE_CONFIG.name }],
-  creator: SITE_CONFIG.name,
-  openGraph: {
-    type: 'website',
-    locale: SITE_CONFIG.locale,
-    url: SITE_CONFIG.url,
-    siteName: SITE_CONFIG.name,
-    title: `${SITE_CONFIG.name} | ${SITE_CONFIG.tagline}`,
-    description: SITE_CONFIG.description,
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: `${SITE_CONFIG.name} | ${SITE_CONFIG.tagline}`,
-    description: SITE_CONFIG.description,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true },
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const l = locale as Locale;
+  const t = await getTranslations({ locale, namespace: "siteMeta" });
+
+  const title = `${t("name")} | ${t("tagline")}`;
+
+  return {
+    /* Required so OG images, canonicals and hreflang resolve to absolute URLs. */
+    metadataBase: new URL(SITE_CONFIG.url),
+    title: { default: title, template: `%s | ${t("name")}` },
+    description: t("description"),
+    authors: [{ name: t("name") }],
+    creator: t("name"),
+    alternates: alternatesFor(l),
+    openGraph: {
+      type: "website",
+      locale: BCP47[l],
+      alternateLocale: routing.locales.filter((x) => x !== l).map((x) => BCP47[x]),
+      url: absoluteUrl(l),
+      siteName: t("name"),
+      title,
+      description: t("description"),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: t("description"),
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, "max-image-preview": "large" },
+    },
+  };
+}
 
 export default async function LocaleLayout({
   children,
@@ -77,6 +92,7 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body>
+        <StructuredData locale={locale as Locale} />
         <Script
           id="theme-init"
           strategy="beforeInteractive"

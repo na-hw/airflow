@@ -3,12 +3,18 @@ import { NextResponse } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 import { routing } from './i18n/routing';
 
+/* Hosts allowed to embed our images. Search-engine image crawlers are included
+   deliberately: blocking them would drop the product photos out of Google
+   Images, a real traffic source for HVAC part searches. */
 const ALLOWED_HOSTS = [
   'airflowsystem.ir',
   'www.airflowsystem.ir',
   'airflow-chi.vercel.app',
   'localhost',
   '127.0.0.1',
+  'www.google.com',
+  'images.google.com',
+  'www.bing.com',
 ];
 
 const handleI18nRouting = createMiddleware(routing);

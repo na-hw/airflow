@@ -1,4 +1,9 @@
 {
+  "siteMeta": {
+    "name": "Airflow System",
+    "tagline": "Smart Air Distribution Solutions",
+    "description": "Specialist manufacturer of air diffusers, dampers and air distribution equipment with over 18 years of experience in Iran."
+  },
   "resources": {
     "title": "Technical Resources",
     "home": "Home"
@@ -62,5 +67,27 @@
     "phone": "Invalid phone number",
     "projectType": "Please select a project type",
     "message": "Message must be at least 10 characters"
+  },
+  "pageMeta": {
+    "home": {
+      "title": "Airflow System | Smart Air Distribution Solutions",
+      "description": "Manufacturer of air diffusers, dampers and air distribution equipment — design, production and installation of HVAC systems across Iran with over 18 years of experience."
+    },
+    "about": {
+      "title": "About Us",
+      "description": "Airflow System brings over 18 years of experience in designing, manufacturing and installing air distribution systems for commercial, industrial and healthcare projects."
+    },
+    "products": {
+      "title": "Products",
+      "description": "A complete range of air distribution products: diffusers, ceiling and wall grilles, dampers, control equipment and HVAC accessories."
+    },
+    "projects": {
+      "title": "Projects",
+      "description": "Selected Airflow System projects across Iran — commercial, office, healthcare, industrial, hotel and airport installations."
+    },
+    "resources": {
+      "title": "Technical Resources",
+      "description": "Easy access to product catalogues, technical files, drawings and educational resources from Airflow System."
+    }
   }
 }

@@ -1,10 +1,15 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import ResourcesContent from './ResourcesContent';
 
-export const metadata: Metadata = {
-  title: 'Resources | منابع فنی',
-  description: 'Easy access to catalogs, technical files, and educational resources from Airflow System.',
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata(locale, "resources", "/resources");
+}
 
 export default function ResourcesPage() {
   return <ResourcesContent />;

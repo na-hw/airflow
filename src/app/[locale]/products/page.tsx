@@ -1,11 +1,16 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import { Suspense } from 'react';
 import ProductsContent from './ProductsContent';
 
-export const metadata: Metadata = {
-  title: 'Products | محصولات',
-  description: 'A complete range of air distribution products — diffusers, dampers, control equipment and accessories.',
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata(locale, "products", "/products");
+}
 
 export default function ProductsPage() {
   return (
