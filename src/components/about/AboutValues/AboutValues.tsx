@@ -18,10 +18,7 @@ export default function AboutValues({ title, items }: Props) {
   return (
     <section className={styles.section} id="values">
       <Container>
-        <h2 className={styles.title}>
-          {title}
-          <span className={styles.dot}>+</span>
-        </h2>
+        <h2 className={styles.title}>{title}</h2>
 
         <div className={styles.grid}>
           {items.map((item) => (
