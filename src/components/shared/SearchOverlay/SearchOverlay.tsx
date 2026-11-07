@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
@@ -46,11 +46,17 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
     [allProducts, query],
   );
 
+  // Every close path goes through here, so the next open starts empty.
+  const close = useCallback(() => {
+    setQuery("");
+    onClose();
+  }, [onClose]);
+
   useEffect(() => {
     if (!isOpen) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") close();
     };
     document.addEventListener("keydown", handleKeyDown);
     document.body.style.overflow = "hidden";
@@ -62,11 +68,7 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
       document.body.style.overflow = "";
       clearTimeout(focusTimer);
     };
-  }, [isOpen, onClose]);
-
-  useEffect(() => {
-    if (!isOpen) setQuery("");
-  }, [isOpen]);
+  }, [isOpen, close]);
 
   if (typeof document === "undefined") return null;
 
@@ -75,7 +77,7 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
       {isOpen && (
         <motion.div
           className={styles.backdrop}
-          onClick={onClose}
+          onClick={close}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -106,7 +108,7 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
               <button
                 type="button"
                 className={styles.closeBtn}
-                onClick={onClose}
+                onClick={close}
                 aria-label={t.close}
               >
                 <Icon name="x" size={20} />
@@ -133,7 +135,7 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                         <Link
                           href={product.href}
                           className={styles.resultItem}
-                          onClick={onClose}
+                          onClick={close}
                         >
                           <span className={styles.resultImgWrap}>
                             <Image

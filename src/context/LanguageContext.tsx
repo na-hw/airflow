@@ -1,6 +1,7 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useSyncExternalStore } from 'react';
+import { createPreference } from '@/lib/createPreference';
 
 export type Lang = 'fa' | 'en';
 export type Dir = 'rtl' | 'ltr';
@@ -10,6 +11,18 @@ interface LanguageContextValue {
   dir: Dir;
   setLang: (lang: Lang) => void;
 }
+
+const dirOf = (lang: Lang): Dir => (lang === 'en' ? 'ltr' : 'rtl');
+
+const languagePreference = createPreference<Lang>({
+  key: 'lang',
+  values: ['fa', 'en'],
+  fallback: 'fa',
+  apply: (lang) => {
+    document.documentElement.setAttribute('lang', lang);
+    document.documentElement.setAttribute('dir', dirOf(lang));
+  },
+});
 
 const LanguageContext = createContext<LanguageContextValue>({
   lang: 'fa',
@@ -22,32 +35,15 @@ export function useLanguage() {
 }
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Lang>('fa');
-
-  useEffect(() => {
-    const stored = localStorage.getItem('lang') as Lang | null;
-    const initial: Lang = stored === 'en' ? 'en' : 'fa';
-    applyLang(initial);
-    setLangState(initial);
-  }, []);
-
-  const setLang = (next: Lang) => {
-    localStorage.setItem('lang', next);
-    applyLang(next);
-    setLangState(next);
-  };
-
-  const dir: Dir = lang === 'en' ? 'ltr' : 'rtl';
+  const lang = useSyncExternalStore(
+    languagePreference.subscribe,
+    languagePreference.getSnapshot,
+    languagePreference.getServerSnapshot,
+  );
 
   return (
-    <LanguageContext.Provider value={{ lang, dir, setLang }}>
+    <LanguageContext.Provider value={{ lang, dir: dirOf(lang), setLang: languagePreference.set }}>
       {children}
     </LanguageContext.Provider>
   );
-}
-
-function applyLang(lang: Lang) {
-  const dir = lang === 'en' ? 'ltr' : 'rtl';
-  document.documentElement.setAttribute('lang', lang);
-  document.documentElement.setAttribute('dir', dir);
 }

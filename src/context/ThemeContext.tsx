@@ -1,6 +1,7 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useSyncExternalStore } from 'react';
+import { createPreference } from '@/lib/createPreference';
 
 type Theme = 'dark' | 'light';
 
@@ -8,6 +9,13 @@ interface ThemeContextValue {
   theme: Theme;
   toggleTheme: () => void;
 }
+
+const themePreference = createPreference<Theme>({
+  key: 'theme',
+  values: ['dark', 'light'],
+  fallback: 'dark',
+  apply: (theme) => document.documentElement.setAttribute('data-theme', theme),
+});
 
 const ThemeContext = createContext<ThemeContextValue>({
   theme: 'dark',
@@ -19,23 +27,13 @@ export function useTheme() {
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('dark');
+  const theme = useSyncExternalStore(
+    themePreference.subscribe,
+    themePreference.getSnapshot,
+    themePreference.getServerSnapshot,
+  );
 
-  useEffect(() => {
-    const stored = localStorage.getItem('theme') as Theme | null;
-    const initial = stored === 'light' || stored === 'dark' ? stored : 'dark';
-    setTheme(initial);
-    document.documentElement.setAttribute('data-theme', initial);
-  }, []);
-
-  const toggleTheme = () => {
-    setTheme((prev) => {
-      const next: Theme = prev === 'dark' ? 'light' : 'dark';
-      localStorage.setItem('theme', next);
-      document.documentElement.setAttribute('data-theme', next);
-      return next;
-    });
-  };
+  const toggleTheme = () => themePreference.set(theme === 'dark' ? 'light' : 'dark');
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

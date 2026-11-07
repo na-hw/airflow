@@ -3,7 +3,6 @@
 import Container from "@/components/shared/Container/Container";
 import ResourceCard from "@/components/shared/ResourceCard/ResourceCard";
 import SectionTitle from "@/components/shared/SectionTitle/SectionTitle";
-import { useLanguage } from "@/context/LanguageContext";
 import type { ResourcesData } from "@/types";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
@@ -14,7 +13,6 @@ interface ResourcesProps {
 }
 
 export default function Resources({ data }: ResourcesProps) {
-  const { lang } = useLanguage();
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
