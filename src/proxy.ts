@@ -1,26 +1,20 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import { isAllowedImageReferer } from "@/lib/hotlink";
 
-const ALLOWED_HOSTS = [
-  "airflowsystem.ir",
-  "www.airflowsystem.ir",
-  "airflow-chi.vercel.app",
-  "localhost",
-  "127.0.0.1",
-];
-
+/** Blocks other websites from hotlinking our images. */
 export function proxy(request: NextRequest) {
   const referer = request.headers.get("referer");
 
-  if (referer) {
-    try {
-      const refererHost = new URL(referer).hostname;
-      if (!ALLOWED_HOSTS.includes(refererHost)) {
-        return new NextResponse(null, { status: 403 });
-      }
-    } catch {
-      // Malformed referer header, allow through.
-    }
+  // The host the browser asked for: behind Vercel's edge it arrives as
+  // x-forwarded-host, otherwise as the Host header (strip any port).
+  const host = (request.headers.get("x-forwarded-host") ?? request.headers.get("host") ?? "")
+    .split(",")[0]
+    .trim()
+    .replace(/:\d+$/, "");
+
+  if (!isAllowedImageReferer(referer, host)) {
+    return new NextResponse(null, { status: 403 });
   }
 
   return NextResponse.next();
