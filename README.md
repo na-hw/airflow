@@ -31,7 +31,8 @@ src/
 │   ├── about/              # Über uns
 │   ├── products/           # Produktliste + Detailseite ([slug])
 │   ├── projects/           # Referenzprojekte + Detail ([slug])
-│   └── resources/          # Downloads / Ressourcen
+│   ├── resources/          # Downloads / Ressourcen
+│   └── api/contact/        # Kontaktformular-Endpoint (Versand via Resend)
 ├── components/
 │   ├── home/               # Sektionen der Homepage
 │   │   ├── Hero/
@@ -71,9 +72,9 @@ src/
 ├── constants/              # SITE_CONFIG, Animationskonstanten
 ├── context/                # ThemeContext (Dark/Light), LanguageContext (FA/EN)
 ├── hooks/                  # Custom React Hooks
-├── lib/                    # Hilfsfunktionen
-├── services/               # API-Schicht (vorbereitet)
-└── styles/                 # CSS-Variablen / Design-Tokens
+├── lib/                    # Hilfsfunktionen (+ Unit-Tests in lib/__tests__)
+├── styles/                 # CSS-Variablen / Design-Tokens
+└── proxy.ts                # Hotlink-Schutz für /images (Referer-Prüfung)
 ```
 
 ---
@@ -91,7 +92,16 @@ Die App läuft standardmäßig auf [http://localhost:3000](http://localhost:3000
 npm run build    # Produktions-Build
 npm run start    # Produktionsserver starten
 npm run lint     # ESLint ausführen
+npm test         # Unit-Tests (Node-Testrunner, keine Zusatz-Abhängigkeit)
 ```
+
+### Umgebungsvariablen (`.env.local`)
+
+| Variable | Pflicht | Zweck |
+|---|---|---|
+| `RESEND_API_KEY` | ja | API-Key für den E-Mail-Versand des Kontaktformulars |
+| `CONTACT_TO_EMAIL` | nein | Empfängeradresse der Anfragen (Standard: Entwickleradresse) |
+| `CONTACT_FROM_EMAIL` | nein | Absender, z. B. `Airflow <kontakt@airflowsystem.ir>` (verifizierte Domain nötig) |
 
 ---
 
@@ -99,7 +109,9 @@ npm run lint     # ESLint ausführen
 
 Alle Texte und Daten liegen als JSON-Dateien in `src/data/`. Es ist kein CMS notwendig — Änderungen an den JSON-Dateien wirken sich direkt auf die Website aus.
 
-**Wichtig:** JSON-Importe müssen mit `as unknown as Type` gecastet werden, damit TypeScript Literal-Unions (z. B. `"primary" | "outline"`) nicht zu `string` verbreitert.
+**Wichtig:** JSON-Importe müssen mit `as unknown as Bilingual<Type>` gecastet werden, damit TypeScript Literal-Unions (z. B. `"primary" | "outline"`) nicht zu `string` verbreitert.
+
+Große Datensätze (`products-detail.json`, `projects-detail.json`) werden nur in Server-Komponenten (`page.tsx`) importiert; an den Client geht nur der jeweils benötigte Eintrag. Diese Dateien bitte nicht direkt in `"use client"`-Komponenten importieren.
 
 ---
 
