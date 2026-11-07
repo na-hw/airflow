@@ -9,6 +9,7 @@ import ScrollToTop from '@/components/shared/ScrollToTop/ScrollToTop';
 import WhatsAppButton from '@/components/shared/WhatsAppButton/WhatsAppButton';
 import Header from '@/components/layout/Header/Header';
 import Footer from '@/components/layout/Footer/Footer';
+import MotionPreferences from '@/components/layout/MotionPreferences/MotionPreferences';
 
 const vazir = Vazirmatn({
   subsets: ['arabic'],
@@ -82,11 +83,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <ThemeProvider>
           <LanguageProvider>
-            <Header />
-            {children}
-            <Footer />
-            <ScrollToTop />
-            <WhatsAppButton />
+            <MotionPreferences>
+              <Header />
+              {children}
+              <Footer />
+              <ScrollToTop />
+              <WhatsAppButton />
+            </MotionPreferences>
           </LanguageProvider>
         </ThemeProvider>
       </body>

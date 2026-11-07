@@ -1,6 +1,6 @@
-import Field from "@/components/shared/Field/Field";
+import Field, { fieldErrorId } from "@/components/shared/Field/Field";
 import Icon from "@/components/shared/Icon/Icon";
-import { forwardRef } from "react";
+import { useId } from "react";
 import styles from "./formField.module.css";
 
 interface SelectOption {
@@ -13,36 +13,38 @@ interface FormSelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> 
   error?: string;
   options: SelectOption[];
   placeholder?: string;
+  ref?: React.Ref<HTMLSelectElement>;
 }
 
-const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
-  (
-    {
-      label,
-      error,
-      required,
-      options,
-      placeholder,
-      className,
-      defaultValue = "",
-      ...props
-    },
-    ref,
-  ) => (
-    <Field label={label} error={error} required={required}>
+export default function FormSelect({
+  label,
+  error,
+  required,
+  options,
+  placeholder,
+  className,
+  defaultValue = "",
+  id: idProp,
+  ref,
+  ...props
+}: FormSelectProps) {
+  const generatedId = useId();
+  const id = idProp ?? generatedId;
+
+  return (
+    <Field id={id} label={label} error={error} required={required}>
       <div className={styles.selectWrapper}>
         <select
           ref={ref}
           defaultValue={defaultValue}
-          className={[
-            styles.input,
-            styles.select,
-            error && styles.inputError,
-            className,
-          ]
+          className={[styles.input, styles.select, error && styles.inputError, className]
             .filter(Boolean)
             .join(" ")}
           {...props}
+          id={id}
+          aria-required={required || undefined}
+          aria-invalid={error ? true : undefined}
+          aria-describedby={error ? fieldErrorId(id) : undefined}
         >
           {placeholder && (
             <option value="" disabled>
@@ -58,8 +60,5 @@ const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
         <Icon name="chevron-down" size={16} className={styles.selectIcon} />
       </div>
     </Field>
-  ),
-);
-
-FormSelect.displayName = "FormSelect";
-export default FormSelect;
+  );
+}

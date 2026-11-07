@@ -201,6 +201,7 @@ export default function ProductDetailClient({
                           </span>
                         </div>
                         <button
+                          type="button"
                           className={styles.docDownload}
                           aria-label={downloadLabel.replace("{name}", doc.name)}
                         >
@@ -216,12 +217,15 @@ export default function ProductDetailClient({
                     {faq.map((item, i) => (
                       <div key={i} className={styles.faqItem}>
                         <button
+                          type="button"
                           className={[
                             styles.faqQuestion,
                             openFaq === i ? styles.faqOpen : "",
                           ]
                             .filter(Boolean)
                             .join(" ")}
+                          aria-expanded={openFaq === i}
+                          aria-controls={`faq-answer-${i}`}
                           onClick={() => setOpenFaq(openFaq === i ? null : i)}
                         >
                           <span>{item.question}</span>
@@ -232,6 +236,7 @@ export default function ProductDetailClient({
                         <AnimatePresence>
                           {openFaq === i && (
                             <motion.div
+                              id={`faq-answer-${i}`}
                               initial={{ height: 0, opacity: 0 }}
                               animate={{ height: "auto", opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}

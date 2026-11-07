@@ -97,6 +97,19 @@ input, textarea, select {
   outline-offset: 2px;
 }
 
+/* ─── Reduced Motion ──────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* ─── Selection ───────────────────────────────────────────── */
 ::selection {
   background: rgba(30, 111, 207, 0.3);

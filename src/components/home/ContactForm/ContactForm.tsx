@@ -8,6 +8,7 @@ import FormSelect from "@/components/shared/FormField/FormSelect";
 import Icon from "@/components/shared/Icon/Icon";
 import SectionTitle from "@/components/shared/SectionTitle/SectionTitle";
 import {
+  CONTACT_LIMITS,
   getContactSchema,
   type ContactFormValues as FormValues,
 } from "@/lib/contactSchema";
@@ -121,7 +122,7 @@ export default function ContactForm({ data }: ContactFormProps) {
           >
             <div className={styles.formCard}>
               {status === "success" ? (
-                <div className={styles.successMsg}>
+                <div className={styles.successMsg} role="status">
                   <Icon
                     name="check-circle"
                     size={56}
@@ -129,6 +130,7 @@ export default function ContactForm({ data }: ContactFormProps) {
                   />
                   <p>{data.submit.success}</p>
                   <button
+                    type="button"
                     className={styles.resetBtn}
                     onClick={() => setStatus("idle")}
                   >
@@ -147,6 +149,8 @@ export default function ContactForm({ data }: ContactFormProps) {
                       error={errors.name?.message}
                       required
                       type="text"
+                      autoComplete="name"
+                      maxLength={CONTACT_LIMITS.name}
                       placeholder={f("name").placeholder}
                       {...register("name")}
                     />
@@ -155,6 +159,8 @@ export default function ContactForm({ data }: ContactFormProps) {
                       error={errors.email?.message}
                       required
                       type="email"
+                      autoComplete="email"
+                      maxLength={CONTACT_LIMITS.email}
                       placeholder={f("email").placeholder}
                       {...register("email")}
                     />
@@ -165,6 +171,8 @@ export default function ContactForm({ data }: ContactFormProps) {
                       error={errors.phone?.message}
                       required
                       type="tel"
+                      autoComplete="tel"
+                      maxLength={CONTACT_LIMITS.phone}
                       placeholder={f("phone").placeholder}
                       {...register("phone")}
                     />
@@ -172,6 +180,8 @@ export default function ContactForm({ data }: ContactFormProps) {
                       label={f("company").label}
                       error={errors.company?.message}
                       type="text"
+                      autoComplete="organization"
+                      maxLength={CONTACT_LIMITS.company}
                       placeholder={f("company").placeholder}
                       {...register("company")}
                     />
@@ -191,10 +201,13 @@ export default function ContactForm({ data }: ContactFormProps) {
                     required
                     placeholder={f("message").placeholder}
                     rows={4}
+                    maxLength={CONTACT_LIMITS.message}
                     {...register("message")}
                   />
                   {status === "error" && (
-                    <p className={styles.errorMsg}>{data.submit.error}</p>
+                    <p className={styles.errorMsg} role="alert">
+                      {data.submit.error}
+                    </p>
                   )}
                   <Button
                     type="submit"
