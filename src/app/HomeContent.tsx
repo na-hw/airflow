@@ -12,6 +12,7 @@ import WhyUs from "@/components/home/WhyUs/WhyUs";
 import { useLanguage } from "@/context/LanguageContext";
 
 import type {
+  Bilingual,
   BestSellersData,
   HeroData,
   PartnersData,
@@ -33,13 +34,6 @@ import resourcesRaw from "@/data/resources.json";
 import statisticsRaw from "@/data/statistics.json";
 import whyUsRaw from "@/data/whyus.json";
 
-type BillingualHero = { fa: HeroData; en: HeroData };
-type BillingualPartners = { fa: PartnersData; en: PartnersData };
-type BillingualWhyUs = { fa: WhyUsData; en: WhyUsData };
-type BillingualProducts = { fa: ProductsData; en: ProductsData };
-type BillingualProjects = { fa: ProjectsData; en: ProjectsData };
-type BillingualStatistics = { fa: StatisticsData; en: StatisticsData };
-type BillingualResources = { fa: ResourcesData; en: ResourcesData };
 
 type ContactField = {
   id: string;
@@ -70,20 +64,19 @@ type ContactData = {
     newMessage: string;
   };
 };
-type BillingualContact = { fa: ContactData; en: ContactData };
 
 export default function HomeContent() {
   const { lang } = useLanguage();
 
-  const hero = (heroRaw as unknown as BillingualHero)[lang];
-  const partners = (partnersRaw as unknown as BillingualPartners)[lang];
-  const whyUs = (whyUsRaw as unknown as BillingualWhyUs)[lang];
-  const products = (productsRaw as unknown as BillingualProducts)[lang];
+  const hero = (heroRaw as unknown as Bilingual<HeroData>)[lang];
+  const partners = (partnersRaw as unknown as Bilingual<PartnersData>)[lang];
+  const whyUs = (whyUsRaw as unknown as Bilingual<WhyUsData>)[lang];
+  const products = (productsRaw as unknown as Bilingual<ProductsData>)[lang];
   const productsPage = productsPageRaw[lang];
-  const projects = (projectsRaw as unknown as BillingualProjects)[lang];
-  const statistics = (statisticsRaw as unknown as BillingualStatistics)[lang];
-  const resources = (resourcesRaw as unknown as BillingualResources)[lang];
-  const contact = (contactRaw as unknown as BillingualContact)[lang];
+  const projects = (projectsRaw as unknown as Bilingual<ProjectsData>)[lang];
+  const statistics = (statisticsRaw as unknown as Bilingual<StatisticsData>)[lang];
+  const resources = (resourcesRaw as unknown as Bilingual<ResourcesData>)[lang];
+  const contact = (contactRaw as unknown as Bilingual<ContactData>)[lang];
 
   const productCategories: ProductCategoriesData = {
     section: products.section,

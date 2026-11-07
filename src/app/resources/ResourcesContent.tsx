@@ -5,9 +5,8 @@ import Breadcrumb from "@/components/shared/Breadcrumb/Breadcrumb";
 import Container from "@/components/shared/Container/Container";
 import { useLanguage } from "@/context/LanguageContext";
 import resourcesRaw from "@/data/resources.json";
-import type { ResourcesData } from "@/types";
+import type { Bilingual, ResourcesData } from "@/types";
 
-type BillingualResources = { fa: ResourcesData; en: ResourcesData };
 
 const labels = {
   fa: { title: "منابع فنی", home: "خانه" },
@@ -17,7 +16,7 @@ const labels = {
 export default function ResourcesContent() {
   const { lang, dir } = useLanguage();
 
-  const resources = (resourcesRaw as unknown as BillingualResources)[lang];
+  const resources = (resourcesRaw as unknown as Bilingual<ResourcesData>)[lang];
   const t = labels[lang];
 
   return (

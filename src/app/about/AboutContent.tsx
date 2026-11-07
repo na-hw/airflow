@@ -5,14 +5,14 @@ import AboutValues from "@/components/about/AboutValues/AboutValues";
 import PageBanner from "@/components/shared/PageBanner/PageBanner";
 import { useLanguage } from "@/context/LanguageContext";
 import aboutRaw from "@/data/about.json";
+import type { Bilingual } from "@/types";
 
 type AboutData = typeof aboutRaw.fa;
-type BillingualAbout = { fa: AboutData; en: AboutData };
 
 export default function AboutContent() {
   const { lang } = useLanguage();
 
-  const about = (aboutRaw as unknown as BillingualAbout)[lang];
+  const about = (aboutRaw as unknown as Bilingual<AboutData>)[lang];
 
   return (
     <main>

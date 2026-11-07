@@ -10,17 +10,16 @@ import Button from "@/components/shared/Button/Button";
 import { SCROLL_THRESHOLD } from "@/constants";
 import { useLanguage } from "@/context/LanguageContext";
 import navRaw from "@/data/navigation.json";
-import type { NavData } from "@/types";
+import type { Bilingual, NavData } from "@/types";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "./Header.module.css";
 
-type BillingualNav = { fa: NavData; en: NavData };
 
 export default function Header() {
   const { lang } = useLanguage();
-  const data = (navRaw as unknown as BillingualNav)[lang];
+  const data = (navRaw as unknown as Bilingual<NavData>)[lang];
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);

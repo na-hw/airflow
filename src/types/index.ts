@@ -193,17 +193,6 @@ export interface ResourcesData {
   items: Resource[];
 }
 
-// ─── Contact Form ─────────────────────────────────────────────
-export interface ContactFormValues {
-  name: string;
-  email: string;
-  phone: string;
-  company?: string;
-  projectType: string;
-  message: string;
-  file?: FileList;
-}
-
 // ─── Footer ───────────────────────────────────────────────────
 export interface FooterLink {
   label: string;
@@ -235,7 +224,6 @@ export interface FooterData {
 export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger' | 'accent';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 export type ButtonTextColor = 'default' | 'white' | 'light' | 'accent';
-export type Direction = 'rtl' | 'ltr';
 
 export type CardVariant = 'default' | 'elevated' | 'outline';
 export type CardPadding = 'sm' | 'md' | 'lg';

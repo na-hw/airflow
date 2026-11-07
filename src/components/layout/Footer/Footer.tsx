@@ -5,15 +5,14 @@ import ContactDetail from "@/components/shared/ContactDetail/ContactDetail";
 import Icon from "@/components/shared/Icon/Icon";
 import { useLanguage } from "@/context/LanguageContext";
 import footerRaw from "@/data/footer.json";
-import type { FooterData } from "@/types";
+import type { Bilingual, FooterData } from "@/types";
 import Link from "next/link";
 import styles from "./Footer.module.css";
 
-type BillingualFooter = { fa: FooterData; en: FooterData };
 
 export default function Footer() {
   const { lang } = useLanguage();
-  const data = (footerRaw as unknown as BillingualFooter)[lang];
+  const data = (footerRaw as unknown as Bilingual<FooterData>)[lang];
   return (
     <footer className={styles.footer}>
       <div className={styles.footerTop}>

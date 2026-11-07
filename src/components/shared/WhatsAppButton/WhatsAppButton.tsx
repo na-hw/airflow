@@ -6,16 +6,16 @@ import { SITE_CONFIG } from "@/constants";
 import contactRaw from "@/data/contact.json";
 import { useEffect, useState } from "react";
 import styles from "./WhatsAppButton.module.css";
+import type { Bilingual } from "@/types";
 
 const SHOW_INTERVAL_MS = 10000;
 const SHOW_DURATION_MS = 3000;
 
 type WhatsappWidgetCopy = { bubble: string; ariaLabel: string };
-type BillingualContact = { fa: { whatsappWidget: WhatsappWidgetCopy }; en: { whatsappWidget: WhatsappWidgetCopy } };
 
 export default function WhatsAppButton() {
   const { lang } = useLanguage();
-  const t = (contactRaw as unknown as BillingualContact)[lang].whatsappWidget;
+  const t = (contactRaw as unknown as Bilingual<{ whatsappWidget: WhatsappWidgetCopy }>)[lang].whatsappWidget;
   const [showBubble, setShowBubble] = useState(false);
 
   useEffect(() => {
