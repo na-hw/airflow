@@ -94,6 +94,12 @@ export default function ProductDetailClient({
     return `https://wa.me/${SITE_CONFIG.whatsapp}?text=${encodeURIComponent(text)}`;
   };
 
+  const openWhatsappInquiry: React.MouseEventHandler<HTMLElement> = (e) => {
+    e.preventDefault();
+    const pageUrl = `${window.location.origin}${window.location.pathname}`;
+    window.open(buildWhatsappHref(pageUrl), "_blank", "noopener,noreferrer");
+  };
+
   return (
     <>
       {/* ─── Breadcrumb ──────────────────────────────────────── */}
@@ -132,11 +138,7 @@ export default function ProductDetailClient({
                   variant="primary"
                   size="lg"
                   iconStart={<Icon name="whatsapp" size={18} />}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const pageUrl = `${window.location.origin}${window.location.pathname}`;
-                    window.open(buildWhatsappHref(pageUrl), "_blank", "noopener,noreferrer");
-                  }}
+                  onClick={openWhatsappInquiry}
                 >
                   {cta.inquiry.label}
                 </Button>
@@ -256,6 +258,20 @@ export default function ProductDetailClient({
           </Tabs>
         </Container>
       </section>
+
+      {/* ─── Mobile: inquiry always within thumb reach ────────── */}
+      <div className={styles.stickyCta} data-sticky-cta>
+        <Button
+          href={buildWhatsappHref()}
+          variant="primary"
+          size="lg"
+          fullWidth
+          iconStart={<Icon name="whatsapp" size={18} />}
+          onClick={openWhatsappInquiry}
+        >
+          {cta.inquiry.label}
+        </Button>
+      </div>
     </>
   );
 }

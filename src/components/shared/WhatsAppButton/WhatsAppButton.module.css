@@ -102,3 +102,8 @@
     transform: translateX(0) scale(1);
   }
 }
+
+/* The product page's sticky bar already offers the WhatsApp inquiry */
+@media (max-width: 768px) {
+  :global(body:has([data-sticky-cta])) .wrapper { display: none; }
+}

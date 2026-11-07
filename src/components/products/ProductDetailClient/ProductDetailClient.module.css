@@ -451,7 +451,15 @@
 
   .featuresGrid { grid-template-columns: 1fr 1fr; }
 
-  .ctaButtons { flex-direction: column; }
+  .ctaButtons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ctaButtons > * {
+    justify-content: center;
+    width: 100%;
+  }
 
   .btnPrimary,
   .btnOutline { width: 100%; justify-content: center; }
@@ -463,5 +471,31 @@
 @media (max-width: 480px) {
   .productName { font-size: var(--text-3xl); }
   .modelTag { font-size: var(--text-2xl); }
-  .featuresGrid { grid-template-columns: 1fr; }
+  /* Two columns keep the six features from filling a whole screen */
+  .featureItem { padding: var(--space-3); gap: var(--space-2); }
+  .featureLabel { white-space: normal; font-size: var(--text-xs); }
+}
+
+/* ─── Mobile Sticky Inquiry Bar ─────────────────────────────── */
+.stickyCta { display: none; }
+
+@media (max-width: 768px) {
+  .stickyCta {
+    display: block;
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: var(--z-sticky);
+    padding: var(--space-3) var(--section-padding-x);
+    padding-bottom: calc(var(--space-3) + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Keep the end of the page reachable above the bar */
+  :global(body:has([data-sticky-cta])) {
+    padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  }
 }

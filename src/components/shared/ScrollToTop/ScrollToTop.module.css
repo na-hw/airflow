@@ -37,3 +37,10 @@
   box-shadow: 0 6px 28px var(--color-accent-glow);
   transform: translateY(-2px);
 }
+
+/* Sit above the product page's sticky inquiry bar */
+@media (max-width: 768px) {
+  :global(body:has([data-sticky-cta])) .btn {
+    bottom: calc(96px + env(safe-area-inset-bottom));
+  }
+}
