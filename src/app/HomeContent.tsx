@@ -81,14 +81,13 @@ export default function HomeContent() {
   const productCategories: ProductCategoriesData = {
     section: products.section,
     categoryCta: products.categoryCta,
-    categories: productsPage.tabs
-      .filter((tab) => tab.id !== "all")
-      .map((tab) => ({
-        id: tab.id,
-        label: tab.label,
-        image: productsPage.items.find((item) => item.category === tab.id)
-          ?.image,
-      })),
+    // Categories without products would render as empty cards.
+    categories: productsPage.tabs.flatMap((tab) => {
+      const firstItem = productsPage.items.find((item) => item.category === tab.id);
+      return tab.id !== "all" && firstItem
+        ? [{ id: tab.id, label: tab.label, image: firstItem.image }]
+        : [];
+    }),
   };
 
   const bestSellers: BestSellersData = {
