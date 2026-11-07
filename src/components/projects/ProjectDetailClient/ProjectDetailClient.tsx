@@ -116,7 +116,7 @@ export default function ProjectDetailClient({
                 src={heroImage}
                 alt={title}
                 fill
-                unoptimized
+                sizes="(max-width: 1024px) 100vw, 640px"
                 className={styles.aboutImg}
               />
             </div>
@@ -165,7 +165,7 @@ export default function ProjectDetailClient({
                     src={p.image}
                     alt={p.name}
                     fill
-                    unoptimized
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
                     className={styles.productImage}
                   />
                 </div>

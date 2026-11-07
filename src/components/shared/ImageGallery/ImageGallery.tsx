@@ -34,7 +34,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
               src={images[active].src}
               alt={images[active].alt}
               fill
-              unoptimized
+              sizes="(max-width: 1024px) 100vw, 640px"
               className={styles.img}
             />
           </motion.div>
@@ -50,7 +50,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
             aria-label={img.alt}
             aria-pressed={active === i}
           >
-            <Image src={img.src} alt="" fill unoptimized />
+            <Image src={img.src} alt="" fill sizes="120px" />
           </button>
         ))}
       </div>
