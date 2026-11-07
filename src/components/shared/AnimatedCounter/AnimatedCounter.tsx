@@ -32,11 +32,14 @@ export default function AnimatedCounter({ value, active, className, formatValue 
     return () => cancelAnimationFrame(frame);
   }, [active, value]);
 
+  // Compact notation keeps large numbers short in the site's own digits:
+  // "۱۳ هزار" in Persian, "13K" in English.
   const text = formatValue
     ? formatValue(display)
-    : display >= 1000
-      ? `${(display / 1000).toFixed(display % 1000 === 0 ? 0 : 1)}K`
-      : display.toLocaleString(lang === "fa" ? "fa-IR" : "en-US");
+    : new Intl.NumberFormat(lang === "fa" ? "fa-IR" : "en-US", {
+        notation: "compact",
+        maximumFractionDigits: 1,
+      }).format(display);
 
   return <span className={className ?? styles.value}>{text}</span>;
 }
