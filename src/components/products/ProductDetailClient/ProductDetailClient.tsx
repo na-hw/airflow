@@ -83,14 +83,16 @@ export default function ProductDetailClient({
   const specsLeft = specs.slice(0, half);
   const specsRight = specs.slice(half);
 
-  const SITE_URL = "https://airflow-chi.vercel.app";
-  const productUrl =
-    typeof window !== "undefined" ? `${SITE_URL}${window.location.pathname}` : "";
-  const whatsappMessage =
-    lang === "fa"
-      ? `سلام، من به محصول ${name} ${model} علاقه‌مندم و می‌خواهم استعلام قیمت بگیرم.\n${productUrl}`
-      : `Hello, I'm interested in ${name} ${model} and would like to request a quote.\n${productUrl}`;
-  const whatsappHref = `https://wa.me/${SITE_CONFIG.whatsapp}?text=${encodeURIComponent(whatsappMessage)}`;
+  // The page URL is only known in the browser, so it is appended on click.
+  // Rendering it into `href` would make server and client HTML differ.
+  const buildWhatsappHref = (pageUrl?: string) => {
+    const message =
+      lang === "fa"
+        ? `سلام، من به محصول ${name} ${model} علاقه‌مندم و می‌خواهم استعلام قیمت بگیرم.`
+        : `Hello, I'm interested in ${name} ${model} and would like to request a quote.`;
+    const text = pageUrl ? `${message}\n${pageUrl}` : message;
+    return `https://wa.me/${SITE_CONFIG.whatsapp}?text=${encodeURIComponent(text)}`;
+  };
 
   return (
     <>
@@ -126,13 +128,14 @@ export default function ProductDetailClient({
               {/* CTA Buttons */}
               <div className={styles.ctaButtons}>
                 <Button
-                  href={whatsappHref}
+                  href={buildWhatsappHref()}
                   variant="primary"
                   size="lg"
                   iconStart={<Icon name="whatsapp" size={18} />}
                   onClick={(e) => {
                     e.preventDefault();
-                    window.open(whatsappHref, "_blank", "noopener,noreferrer");
+                    const pageUrl = `${window.location.origin}${window.location.pathname}`;
+                    window.open(buildWhatsappHref(pageUrl), "_blank", "noopener,noreferrer");
                   }}
                 >
                   {cta.inquiry.label}
