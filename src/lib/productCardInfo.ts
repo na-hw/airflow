@@ -1,4 +1,5 @@
 import type { Lang } from "@/context/LanguageContext";
+import { toAsciiDigits } from "@/lib/digits";
 import type { Bilingual } from "@/types";
 import productsDetailRaw from "@/data/products-detail.json";
 import productsRaw from "@/data/products.json";
@@ -52,12 +53,6 @@ const LINEAR_LABELS: Record<Lang, string[]> = {
 
 const APPLICATION_LABELS: Record<Lang, string> = { fa: "کاربرد", en: "Application" };
 const MATERIAL_LABELS: Record<Lang, string> = { fa: "جنس", en: "Material" };
-
-const PERSIAN_DIGITS = "۰۱۲۳۴۵۶۷۸۹";
-
-function toAsciiDigits(value: string): string {
-  return value.replace(/[۰-۹]/g, (d) => String(PERSIAN_DIGITS.indexOf(d)));
-}
 
 /**
  * Pulls the smallest listed size out of a spec value such as

@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import styles from "./AnimatedCounter.module.css";
 
+const DURATION_MS = 2000;
+
 interface AnimatedCounterProps {
   value: number;
   active: boolean;
@@ -14,19 +16,20 @@ interface AnimatedCounterProps {
 export default function AnimatedCounter({ value, active, className, formatValue }: AnimatedCounterProps) {
   const { lang } = useLanguage();
   const [display, setDisplay] = useState(0);
-  const duration = 2000;
 
   useEffect(() => {
     if (!active) return;
     let start: number | null = null;
+    let frame = 0;
     const step = (ts: number) => {
-      if (!start) start = ts;
-      const progress = Math.min((ts - start) / duration, 1);
+      start ??= ts;
+      const progress = Math.min((ts - start) / DURATION_MS, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       setDisplay(Math.round(eased * value));
-      if (progress < 1) requestAnimationFrame(step);
+      if (progress < 1) frame = requestAnimationFrame(step);
     };
-    requestAnimationFrame(step);
+    frame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frame);
   }, [active, value]);
 
   const text = formatValue

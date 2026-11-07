@@ -1,4 +1,5 @@
 import Icon from '@/components/shared/Icon/Icon';
+import { toTelHref } from '@/lib/digits';
 import styles from './TopBar.module.css';
 
 interface TopBarProps {
@@ -15,7 +16,7 @@ export default function TopBar({ phone, email, address, scrolled }: TopBarProps)
         <div className={styles.topBarInfo}>
           <span className={styles.topBarItem}>
             <Icon name="phone" size={14} />
-            <a href={`tel:${phone}`}>{phone}</a>
+            <a href={toTelHref(phone)}>{phone}</a>
           </span>
           <span className={styles.topBarItem}>
             <Icon name="mail" size={14} />

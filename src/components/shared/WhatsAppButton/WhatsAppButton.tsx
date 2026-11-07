@@ -19,16 +19,16 @@ export default function WhatsAppButton() {
   const [showBubble, setShowBubble] = useState(false);
 
   useEffect(() => {
+    let hideTimeout: ReturnType<typeof setTimeout> | undefined;
     const interval = setInterval(() => {
       setShowBubble(true);
-      const hideTimeout = setTimeout(
-        () => setShowBubble(false),
-        SHOW_DURATION_MS,
-      );
-      return () => clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(() => setShowBubble(false), SHOW_DURATION_MS);
     }, SHOW_INTERVAL_MS);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(hideTimeout);
+    };
   }, []);
 
   return (
