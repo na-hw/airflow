@@ -137,6 +137,8 @@
 }
 
 .titleHighlight {
+  /* Own line, balanced on its own (text-wrap is inherited from h1) */
+  display: block;
   color: var(--color-primary-light);
 }
 

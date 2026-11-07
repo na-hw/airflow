@@ -55,6 +55,8 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: var(--font-bold);
   line-height: var(--leading-tight);
   color: var(--color-text-primary);
+  /* Even line lengths: no single word stranded on the last line. */
+  text-wrap: balance;
 }
 
 p { line-height: var(--leading-relaxed); }

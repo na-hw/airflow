@@ -69,7 +69,6 @@ export default function Hero({ data }: HeroProps) {
         <div className={styles.content}>
           <motion.h1 className={styles.title} {...fadeUp(0.25)}>
             {data.title.main}
-            <br />
             <span className={styles.titleHighlight}>
               {data.title.highlight}
             </span>
