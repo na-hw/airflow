@@ -6,7 +6,12 @@ import type { ProductCardTilesById } from '@/lib/productCardInfo';
 import pageRaw from '@/data/products-page.json';
 import type { Bilingual } from '@/types';
 
-export default function ProductsContent({ cardTiles }: { cardTiles: Bilingual<ProductCardTilesById> }) {
+interface Props {
+  cardTiles: Bilingual<ProductCardTilesById>;
+  initialCategory?: string;
+}
+
+export default function ProductsContent({ cardTiles, initialCategory }: Props) {
   const { lang } = useLanguage();
   const page = pageRaw[lang];
 
@@ -19,6 +24,7 @@ export default function ProductsContent({ cardTiles }: { cardTiles: Bilingual<Pr
         items={page.items}
         cta={page.cta}
         cardTiles={cardTiles[lang]}
+        initialCategory={initialCategory}
       />
     </main>
   );

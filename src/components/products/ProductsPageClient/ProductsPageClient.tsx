@@ -10,8 +10,7 @@ import ProductSearchBar from "@/components/products/ProductSearchBar/ProductSear
 import { useLanguage } from "@/context/LanguageContext";
 import type { ProductCardTilesById } from "@/lib/productCardInfo";
 import { AnimatePresence, motion } from "framer-motion";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import type { ProductItem } from "./ProductCard";
 import ProductCard from "./ProductCard";
 import styles from "./ProductsPageClient.module.css";
@@ -34,6 +33,7 @@ interface Props {
   items: ProductItem[];
   cta: Cta;
   cardTiles: ProductCardTilesById;
+  initialCategory?: string;
 }
 
 export default function ProductsPageClient({
@@ -43,39 +43,25 @@ export default function ProductsPageClient({
   items,
   cta,
   cardTiles,
+  initialCategory,
 }: Props) {
   const { lang } = useLanguage();
-  const searchParams = useSearchParams();
-  const categoryParam = searchParams.get("category");
-  const initialTab =
-    categoryParam && tabs.some((t) => t.id === categoryParam)
-      ? categoryParam
-      : "all";
-  const [activeTab, setActiveTab] = useState(initialTab);
-  const [query, setQuery] = useState("");
-  const router = useRouter();
-  const pathname = usePathname();
-
-  const handleTabChange = useCallback(
-    (tabId: string) => {
-      setActiveTab(tabId);
-
-      const params = new URLSearchParams(searchParams.toString());
-
-      if (tabId === "all") {
-        params.delete("category");
-      } else {
-        params.set("category", tabId);
-      }
-
-      const query = params.toString();
-
-      router.replace(query ? `${pathname}?${query}` : pathname, {
-        scroll: false,
-      });
-    },
-    [pathname, router, searchParams],
+  const [activeTab, setActiveTab] = useState(() =>
+    initialCategory && tabs.some((t) => t.id === initialCategory)
+      ? initialCategory
+      : "all",
   );
+  const [query, setQuery] = useState("");
+
+  // Keep the filter shareable in the URL without a server round trip;
+  // Next.js syncs native history updates with its router.
+  const handleTabChange = (tabId: string) => {
+    setActiveTab(tabId);
+    const url = new URL(window.location.href);
+    if (tabId === "all") url.searchParams.delete("category");
+    else url.searchParams.set("category", tabId);
+    window.history.replaceState(null, "", url);
+  };
 
   // Both filters run in one pass over `items`, and the memo depends only on
   // primitives plus the `items` prop — deriving `byCategory` outside the memo
