@@ -9,18 +9,18 @@
     "nav": { "prev": "قبلی", "next": "بعدی" },
     "card": { "viewDetails": "مشاهده جزئیات", "viewCaseStudy": "مشاهده مطالعه موردی" },
     "items": [
-      { "id": "iran-mall",             "image": "/images/projects/iran-mall.png",             "category": "تجاری",     "title": "ایران مال",                  "location": "تهران",   "href": "/projects/iran-mall",             "featured": true  },
-      { "id": "milad-hospital",        "image": "/images/projects/milad-hospital.png",        "category": "درمانی",    "title": "بیمارستان میلاد",            "location": "تهران",   "href": "/projects/milad-hospital",        "featured": true  },
-      { "id": "milad-tower",           "image": "/images/projects/milad-tower.png",           "category": "اداری",     "title": "برج میلاد",                  "location": "تهران",   "href": "/projects/milad-tower",           "featured": true  },
-      { "id": "iran-khodro",           "image": "/images/projects/iran-khodro.png",           "category": "صنعتی",     "title": "کارخانه ایران خودرو",        "location": "تهران",   "href": "/projects/iran-khodro",           "featured": true  },
-      { "id": "imam-khomeini-airport", "image": "/images/projects/imam-khomeini-airport.png", "category": "فرودگاهی",  "title": "فرودگاه امام خمینی",         "location": "تهران",   "href": "/projects/imam-khomeini-airport", "featured": true  },
-      { "id": "elahieh-complex",       "image": "/images/projects/elahieh-complex.png",       "category": "اداری",     "title": "مجتمع اداری الهیه",          "location": "تهران",   "href": "/projects/elahieh-complex",       "featured": true  },
-      { "id": "parsian-hotel",         "image": "/images/projects/parsian-hotel.png",         "category": "هتل",       "title": "هتل پارسیان",                "location": "اصفهان",  "href": "/projects/parsian-hotel",         "featured": false },
-      { "id": "tehran-metro",          "image": "/images/projects/tehran-metro.png",          "category": "صنعتی",     "title": "مترو تهران خط ۷",            "location": "تهران",   "href": "/projects/tehran-metro",          "featured": false },
-      { "id": "mashhad-mall",          "image": "/images/projects/mashhad-mall.png",          "category": "تجاری",     "title": "پردیس مشهد",                 "location": "مشهد",    "href": "/projects/mashhad-mall",          "featured": false },
-      { "id": "tehran-university",     "image": "/images/projects/tehran-university.png",     "category": "آموزشی",    "title": "دانشگاه تهران",              "location": "تهران",   "href": "/projects/tehran-university",     "featured": false },
-      { "id": "esfahan-steel",         "image": "/images/projects/esfahan-steel.png",         "category": "صنعتی",     "title": "فولاد مبارکه اصفهان",        "location": "اصفهان",  "href": "/projects/esfahan-steel",         "featured": false },
-      { "id": "sharif-university",     "image": "/images/projects/sharif-university.png",     "category": "آموزشی",    "title": "دانشگاه صنعتی شریف",         "location": "تهران",   "href": "/projects/sharif-university",     "featured": false }
+      { "id": "iran-mall",             "image": "/images/projects/iran-mall.webp",             "category": "تجاری",     "title": "ایران مال",                  "location": "تهران",   "href": "/projects/iran-mall",             "featured": true  },
+      { "id": "milad-hospital",        "image": "/images/projects/milad-hospital.webp",        "category": "درمانی",    "title": "بیمارستان میلاد",            "location": "تهران",   "href": "/projects/milad-hospital",        "featured": true  },
+      { "id": "milad-tower",           "image": "/images/projects/milad-tower.webp",           "category": "اداری",     "title": "برج میلاد",                  "location": "تهران",   "href": "/projects/milad-tower",           "featured": true  },
+      { "id": "iran-khodro",           "image": "/images/projects/iran-khodro.webp",           "category": "صنعتی",     "title": "کارخانه ایران خودرو",        "location": "تهران",   "href": "/projects/iran-khodro",           "featured": true  },
+      { "id": "imam-khomeini-airport", "image": "/images/projects/imam-khomeini-airport.webp", "category": "فرودگاهی",  "title": "فرودگاه امام خمینی",         "location": "تهران",   "href": "/projects/imam-khomeini-airport", "featured": true  },
+      { "id": "elahieh-complex",       "image": "/images/projects/elahieh-complex.webp",       "category": "اداری",     "title": "مجتمع اداری الهیه",          "location": "تهران",   "href": "/projects/elahieh-complex",       "featured": true  },
+      { "id": "parsian-hotel",         "image": "/images/projects/parsian-hotel.webp",         "category": "هتل",       "title": "هتل پارسیان",                "location": "اصفهان",  "href": "/projects/parsian-hotel",         "featured": false },
+      { "id": "tehran-metro",          "image": "/images/projects/tehran-metro.webp",          "category": "صنعتی",     "title": "مترو تهران خط ۷",            "location": "تهران",   "href": "/projects/tehran-metro",          "featured": false },
+      { "id": "mashhad-mall",          "image": "/images/projects/mashhad-mall.webp",          "category": "تجاری",     "title": "پردیس مشهد",                 "location": "مشهد",    "href": "/projects/mashhad-mall",          "featured": false },
+      { "id": "tehran-university",     "image": "/images/projects/tehran-university.webp",     "category": "آموزشی",    "title": "دانشگاه تهران",              "location": "تهران",   "href": "/projects/tehran-university",     "featured": false },
+      { "id": "esfahan-steel",         "image": "/images/projects/esfahan-steel.webp",         "category": "صنعتی",     "title": "فولاد مبارکه اصفهان",        "location": "اصفهان",  "href": "/projects/esfahan-steel",         "featured": false },
+      { "id": "sharif-university",     "image": "/images/projects/sharif-university.webp",     "category": "آموزشی",    "title": "دانشگاه صنعتی شریف",         "location": "تهران",   "href": "/projects/sharif-university",     "featured": false }
     ]
   },
   "en": {
@@ -33,18 +33,18 @@
     "nav": { "prev": "Previous", "next": "Next" },
     "card": { "viewDetails": "View Details", "viewCaseStudy": "View Case Study" },
     "items": [
-      { "id": "iran-mall",             "image": "/images/projects/iran-mall.png",             "category": "Commercial", "title": "Iran Mall",                   "location": "Tehran",   "href": "/projects/iran-mall",             "featured": true  },
-      { "id": "milad-hospital",        "image": "/images/projects/milad-hospital.png",        "category": "Healthcare", "title": "Milad Hospital",              "location": "Tehran",   "href": "/projects/milad-hospital",        "featured": true  },
-      { "id": "milad-tower",           "image": "/images/projects/milad-tower.png",           "category": "Office",     "title": "Milad Tower",                 "location": "Tehran",   "href": "/projects/milad-tower",           "featured": true  },
-      { "id": "iran-khodro",           "image": "/images/projects/iran-khodro.png",           "category": "Industrial", "title": "Iran Khodro Factory",         "location": "Tehran",   "href": "/projects/iran-khodro",           "featured": true  },
-      { "id": "imam-khomeini-airport", "image": "/images/projects/imam-khomeini-airport.png", "category": "Airport",    "title": "Imam Khomeini Airport",       "location": "Tehran",   "href": "/projects/imam-khomeini-airport", "featured": true  },
-      { "id": "elahieh-complex",       "image": "/images/projects/elahieh-complex.png",       "category": "Office",     "title": "Elahieh Office Complex",      "location": "Tehran",   "href": "/projects/elahieh-complex",       "featured": true  },
-      { "id": "parsian-hotel",         "image": "/images/projects/parsian-hotel.png",         "category": "Hotel",      "title": "Parsian Hotel",               "location": "Isfahan",  "href": "/projects/parsian-hotel",         "featured": false },
-      { "id": "tehran-metro",          "image": "/images/projects/tehran-metro.png",          "category": "Industrial", "title": "Tehran Metro Line 7",         "location": "Tehran",   "href": "/projects/tehran-metro",          "featured": false },
-      { "id": "mashhad-mall",          "image": "/images/projects/mashhad-mall.png",          "category": "Commercial", "title": "Mashhad Pardis Mall",         "location": "Mashhad",  "href": "/projects/mashhad-mall",          "featured": false },
-      { "id": "tehran-university",     "image": "/images/projects/tehran-university.png",     "category": "Education",  "title": "University of Tehran",        "location": "Tehran",   "href": "/projects/tehran-university",     "featured": false },
-      { "id": "esfahan-steel",         "image": "/images/projects/esfahan-steel.png",         "category": "Industrial", "title": "Mobarakeh Steel (Isfahan)",   "location": "Isfahan",  "href": "/projects/esfahan-steel",         "featured": false },
-      { "id": "sharif-university",     "image": "/images/projects/sharif-university.png",     "category": "Education",  "title": "Sharif University of Technology","location": "Tehran", "href": "/projects/sharif-university",     "featured": false }
+      { "id": "iran-mall",             "image": "/images/projects/iran-mall.webp",             "category": "Commercial", "title": "Iran Mall",                   "location": "Tehran",   "href": "/projects/iran-mall",             "featured": true  },
+      { "id": "milad-hospital",        "image": "/images/projects/milad-hospital.webp",        "category": "Healthcare", "title": "Milad Hospital",              "location": "Tehran",   "href": "/projects/milad-hospital",        "featured": true  },
+      { "id": "milad-tower",           "image": "/images/projects/milad-tower.webp",           "category": "Office",     "title": "Milad Tower",                 "location": "Tehran",   "href": "/projects/milad-tower",           "featured": true  },
+      { "id": "iran-khodro",           "image": "/images/projects/iran-khodro.webp",           "category": "Industrial", "title": "Iran Khodro Factory",         "location": "Tehran",   "href": "/projects/iran-khodro",           "featured": true  },
+      { "id": "imam-khomeini-airport", "image": "/images/projects/imam-khomeini-airport.webp", "category": "Airport",    "title": "Imam Khomeini Airport",       "location": "Tehran",   "href": "/projects/imam-khomeini-airport", "featured": true  },
+      { "id": "elahieh-complex",       "image": "/images/projects/elahieh-complex.webp",       "category": "Office",     "title": "Elahieh Office Complex",      "location": "Tehran",   "href": "/projects/elahieh-complex",       "featured": true  },
+      { "id": "parsian-hotel",         "image": "/images/projects/parsian-hotel.webp",         "category": "Hotel",      "title": "Parsian Hotel",               "location": "Isfahan",  "href": "/projects/parsian-hotel",         "featured": false },
+      { "id": "tehran-metro",          "image": "/images/projects/tehran-metro.webp",          "category": "Industrial", "title": "Tehran Metro Line 7",         "location": "Tehran",   "href": "/projects/tehran-metro",          "featured": false },
+      { "id": "mashhad-mall",          "image": "/images/projects/mashhad-mall.webp",          "category": "Commercial", "title": "Mashhad Pardis Mall",         "location": "Mashhad",  "href": "/projects/mashhad-mall",          "featured": false },
+      { "id": "tehran-university",     "image": "/images/projects/tehran-university.webp",     "category": "Education",  "title": "University of Tehran",        "location": "Tehran",   "href": "/projects/tehran-university",     "featured": false },
+      { "id": "esfahan-steel",         "image": "/images/projects/esfahan-steel.webp",         "category": "Industrial", "title": "Mobarakeh Steel (Isfahan)",   "location": "Isfahan",  "href": "/projects/esfahan-steel",         "featured": false },
+      { "id": "sharif-university",     "image": "/images/projects/sharif-university.webp",     "category": "Education",  "title": "Sharif University of Technology","location": "Tehran", "href": "/projects/sharif-university",     "featured": false }
     ]
   }
 }

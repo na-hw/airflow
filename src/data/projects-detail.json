@@ -40,7 +40,7 @@
         "اجرای موفق با صفر تأخیر در تحویل"
       ],
       "imageCount": 6,
-      "image": "/images/projects/iran-mall.png",
+      "image": "/images/projects/iran-mall.webp",
       "status": "تکمیل شده"
     },
     "milad-hospital": {
@@ -83,7 +83,7 @@
         "سیستم کنترل مرکزی BMS"
       ],
       "imageCount": 6,
-      "image": "/images/projects/milad-hospital.png",
+      "image": "/images/projects/milad-hospital.webp",
       "status": "تکمیل شده"
     },
     "milad-tower": {
@@ -126,7 +126,7 @@
         "صفر توقف در عملیات برج حین اجرا"
       ],
       "imageCount": 6,
-      "image": "/images/projects/milad-tower.png",
+      "image": "/images/projects/milad-tower.webp",
       "status": "تکمیل شده"
     },
     "iran-khodro": {
@@ -169,7 +169,7 @@
         "اجرا در محیط فعال بدون توقف تولید"
       ],
       "imageCount": 6,
-      "image": "/images/projects/iran-khodro.png",
+      "image": "/images/projects/iran-khodro.webp",
       "status": "تکمیل شده"
     },
     "parsian-hotel": {
@@ -212,7 +212,7 @@
         "صرفه‌جویی ۲۵٪ در مصرف انرژی"
       ],
       "imageCount": 6,
-      "image": "/images/projects/parsian-hotel.png",
+      "image": "/images/projects/parsian-hotel.webp",
       "status": "تکمیل شده"
     },
     "tehran-metro": {
@@ -255,7 +255,7 @@
         "مطابق استانداردهای ایمنی مترو"
       ],
       "imageCount": 6,
-      "image": "/images/projects/tehran-metro.png",
+      "image": "/images/projects/tehran-metro.webp",
       "status": "تکمیل شده"
     },
     "mashhad-mall": {
@@ -298,7 +298,7 @@
         "گارانتی ۵ ساله سیستم"
       ],
       "imageCount": 6,
-      "image": "/images/projects/mashhad-mall.png",
+      "image": "/images/projects/mashhad-mall.webp",
       "status": "تکمیل شده"
     },
     "shiraz-airport": {
@@ -341,7 +341,7 @@
         "مطابق استانداردهای IATA"
       ],
       "imageCount": 6,
-      "image": "/images/projects/shiraz-airport.png",
+      "image": "/images/projects/shiraz-airport.webp",
       "status": "تکمیل شده"
     },
     "esfahan-steel": {
@@ -384,7 +384,7 @@
         "عمر کاری تضمین‌شده بیش از ۱۵ سال"
       ],
       "imageCount": 6,
-      "image": "/images/projects/esfahan-steel.png",
+      "image": "/images/projects/esfahan-steel.webp",
       "status": "تکمیل شده"
     },
     "tehran-university": {
@@ -427,7 +427,7 @@
         "گارانتی ۳ ساله کامل سیستم"
       ],
       "imageCount": 6,
-      "image": "/images/projects/tehran-university.png",
+      "image": "/images/projects/tehran-university.webp",
       "status": "تکمیل شده"
     },
     "imam-khomeini-airport": {
@@ -470,7 +470,7 @@
         "مطابق استانداردهای بین‌المللی IATA"
       ],
       "imageCount": 6,
-      "image": "/images/projects/imam-khomeini-airport.png",
+      "image": "/images/projects/imam-khomeini-airport.webp",
       "status": "تکمیل شده"
     },
     "elahieh-complex": {
@@ -513,7 +513,7 @@
         "بهره‌وری انرژی بالاتر از استاندارد ASHRAE"
       ],
       "imageCount": 6,
-      "image": "/images/projects/elahieh-complex.png",
+      "image": "/images/projects/elahieh-complex.webp",
       "status": "تکمیل شده"
     },
     "sharif-university": {
@@ -556,7 +556,7 @@
         "گارانتی ۳ ساله کامل سیستم"
       ],
       "imageCount": 6,
-      "image": "/images/projects/sharif-university.png",
+      "image": "/images/projects/sharif-university.webp",
       "status": "تکمیل شده"
     }
   },
@@ -601,7 +601,7 @@
         "Successful delivery with zero delays"
       ],
       "imageCount": 6,
-      "image": "/images/projects/iran-mall.png",
+      "image": "/images/projects/iran-mall.webp",
       "status": "Completed"
     },
     "milad-hospital": {
@@ -644,7 +644,7 @@
         "Central BMS control system"
       ],
       "imageCount": 6,
-      "image": "/images/projects/milad-hospital.png",
+      "image": "/images/projects/milad-hospital.webp",
       "status": "Completed"
     },
     "milad-tower": {
@@ -687,7 +687,7 @@
         "Zero downtime for tower operations during installation"
       ],
       "imageCount": 6,
-      "image": "/images/projects/milad-tower.png",
+      "image": "/images/projects/milad-tower.webp",
       "status": "Completed"
     },
     "iran-khodro": {
@@ -730,7 +730,7 @@
         "Installed in an active facility without halting production"
       ],
       "imageCount": 6,
-      "image": "/images/projects/iran-khodro.png",
+      "image": "/images/projects/iran-khodro.webp",
       "status": "Completed"
     },
     "parsian-hotel": {
@@ -773,7 +773,7 @@
         "25% savings in energy consumption"
       ],
       "imageCount": 6,
-      "image": "/images/projects/parsian-hotel.png",
+      "image": "/images/projects/parsian-hotel.webp",
       "status": "Completed"
     },
     "tehran-metro": {
@@ -816,7 +816,7 @@
         "Compliant with metro safety standards"
       ],
       "imageCount": 6,
-      "image": "/images/projects/tehran-metro.png",
+      "image": "/images/projects/tehran-metro.webp",
       "status": "Completed"
     },
     "mashhad-mall": {
@@ -859,7 +859,7 @@
         "5-year system warranty"
       ],
       "imageCount": 6,
-      "image": "/images/projects/mashhad-mall.png",
+      "image": "/images/projects/mashhad-mall.webp",
       "status": "Completed"
     },
     "shiraz-airport": {
@@ -902,7 +902,7 @@
         "Compliant with IATA standards"
       ],
       "imageCount": 6,
-      "image": "/images/projects/shiraz-airport.png",
+      "image": "/images/projects/shiraz-airport.webp",
       "status": "Completed"
     },
     "esfahan-steel": {
@@ -945,7 +945,7 @@
         "Guaranteed service life of over 15 years"
       ],
       "imageCount": 6,
-      "image": "/images/projects/esfahan-steel.png",
+      "image": "/images/projects/esfahan-steel.webp",
       "status": "Completed"
     },
     "tehran-university": {
@@ -988,7 +988,7 @@
         "Full 3-year system warranty"
       ],
       "imageCount": 6,
-      "image": "/images/projects/tehran-university.png",
+      "image": "/images/projects/tehran-university.webp",
       "status": "Completed"
     },
     "imam-khomeini-airport": {
@@ -1031,7 +1031,7 @@
         "Compliant with international IATA standards"
       ],
       "imageCount": 6,
-      "image": "/images/projects/imam-khomeini-airport.png",
+      "image": "/images/projects/imam-khomeini-airport.webp",
       "status": "Completed"
     },
     "elahieh-complex": {
@@ -1074,7 +1074,7 @@
         "Energy efficiency above the ASHRAE standard"
       ],
       "imageCount": 6,
-      "image": "/images/projects/elahieh-complex.png",
+      "image": "/images/projects/elahieh-complex.webp",
       "status": "Completed"
     },
     "sharif-university": {
@@ -1117,7 +1117,7 @@
         "Full 3-year system warranty"
       ],
       "imageCount": 6,
-      "image": "/images/projects/sharif-university.png",
+      "image": "/images/projects/sharif-university.webp",
       "status": "Completed"
     }
   }
