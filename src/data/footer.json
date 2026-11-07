@@ -2,6 +2,7 @@
   "fa": {
     "company": {
       "name": "ایرفلو سیستم",
+      "subtitle": "راهکارهای توزیع هوای هوشمند",
       "tagline": "تولید کننده تخصصی انواع دریچه‌ها و دمپرهای هوا، تجهیزات تهویه مطبوع با بیش از ۱۸ سال سابقه درخشان در صنعت.",
       "socials": [
         {
@@ -90,12 +91,13 @@
         }
       ]
     },
-    "copyright": "تمامی حقوق محفوظ است © ۱۴۰۳ | ایرفلو سیستم",
+    "copyright": "تمامی حقوق محفوظ است © {year} | ایرفلو سیستم",
     "termsLink": "شرایط استفاده"
   },
   "en": {
     "company": {
       "name": "Airflow System",
+      "subtitle": "Smart Air Distribution Solutions",
       "tagline": "Specialist manufacturer of air diffusers, dampers, and HVAC equipment with over 18 years of excellence in the industry.",
       "socials": [
         {
@@ -187,7 +189,7 @@
         }
       ]
     },
-    "copyright": "All rights reserved © 2024 | Airflow System",
+    "copyright": "All rights reserved © {year} | Airflow System",
     "termsLink": "Terms of Use"
   }
 }

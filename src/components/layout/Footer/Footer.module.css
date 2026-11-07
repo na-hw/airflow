@@ -171,6 +171,38 @@
 }
 
 @media (max-width: 480px) {
-  .inner { grid-template-columns: 1fr; }
+  .inner { grid-template-columns: 1fr; row-gap: 0; }
+  .companyCol { margin-bottom: var(--space-6); }
+  .contactCol { margin-top: var(--space-8); }
   .bottomInner { flex-direction: column; text-align: center; }
+
+  /* Link columns become an accordion */
+  .linkCol { border-bottom: 1px solid var(--color-border); }
+  .companyCol + .linkCol { border-top: 1px solid var(--color-border); }
+  .linkList { padding-bottom: var(--space-4); }
 }
+
+.colTitleCompact { margin: 0; }
+
+/* `display: flex` on .linkList would otherwise override the hidden attribute */
+.linkList[hidden] { display: none; }
+
+.colToggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 48px;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+}
+
+.colChevron,
+.colChevronOpen {
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  transition: transform var(--transition-fast);
+}
+
+.colChevronOpen { transform: rotate(180deg); }
