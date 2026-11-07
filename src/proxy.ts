@@ -9,7 +9,7 @@ const ALLOWED_HOSTS = [
   "127.0.0.1",
 ];
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const referer = request.headers.get("referer");
 
   if (referer) {
