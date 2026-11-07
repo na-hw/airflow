@@ -4,7 +4,7 @@ import { useState } from "react";
 import Badge from "@/components/shared/Badge/Badge";
 import { useLanguage } from "@/context/LanguageContext";
 import productsRaw from "@/data/products.json";
-import { getProductCardInfo } from "@/lib/productCardInfo";
+import type { ProductCardTile } from "@/lib/productCardInfo";
 import Icon from "@/components/shared/Icon/Icon";
 import Image from "next/image";
 import Link from "next/link";
@@ -21,11 +21,15 @@ export interface ProductItem {
   badge: string | null;
 }
 
-export default function ProductCard({ product }: { product: ProductItem }) {
+interface ProductCardProps {
+  product: ProductItem;
+  tiles: ProductCardTile[];
+}
+
+export default function ProductCard({ product, tiles }: ProductCardProps) {
   const { lang } = useLanguage();
   const { detailsCta } = productsRaw[lang].cardInfo;
   const [imgError, setImgError] = useState(false);
-  const { tiles } = getProductCardInfo(product.id, lang);
 
   const showPlaceholder = !product.image || imgError;
 

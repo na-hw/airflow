@@ -3,11 +3,12 @@
 import ProjectDetailClient from "@/components/projects/ProjectDetailClient/ProjectDetailClient";
 import { useLanguage, type Lang } from "@/context/LanguageContext";
 import productsCatalogRaw from "@/data/products.json";
-import projectsDetailRaw from "@/data/projects-detail.json";
+import type projectsDetailRaw from "@/data/projects-detail.json";
 import projectsPageRaw from "@/data/projects-page.json";
+import type { Bilingual } from "@/types";
 
-type ProjectDetail = (typeof projectsDetailRaw)["fa"][keyof (typeof projectsDetailRaw)["fa"]];
-export type Slug = keyof (typeof projectsDetailRaw)["fa"];
+export type ProjectDetail =
+  (typeof projectsDetailRaw)["fa"][keyof (typeof projectsDetailRaw)["fa"]];
 
 const FALLBACK_PRODUCT_IMAGE = "/images/product-detail-placeholder.svg";
 
@@ -35,17 +36,15 @@ function resolveProduct(label: string, lang: Lang) {
 }
 
 interface Props {
-  slug: Slug;
+  slug: string;
+  project: Bilingual<ProjectDetail>;
 }
 
-export default function ProjectDetailContent({ slug }: Props) {
+export default function ProjectDetailContent({ slug, project: bilingualProject }: Props) {
   const { lang } = useLanguage();
 
-  const projectsDetail = projectsDetailRaw[lang] as Record<Slug, ProjectDetail>;
-  const project = projectsDetail[slug];
-
-  const pageData = projectsPageRaw[lang];
-  const t = pageData.detail;
+  const project = bilingualProject[lang];
+  const t = projectsPageRaw[lang].detail;
 
   const breadcrumb = [
     { label: t.breadcrumb.home, href: "/" },

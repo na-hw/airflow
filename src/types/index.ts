@@ -1,3 +1,8 @@
+import type { Lang } from '@/context/LanguageContext';
+
+/** Content authored in both site languages, keyed by language code. */
+export type Bilingual<T> = Record<Lang, T>;
+
 // ─── Navigation ──────────────────────────────────────────────
 export interface NavItem {
   id: string;

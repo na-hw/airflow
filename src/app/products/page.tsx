@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
+import { getAllProductCardTiles } from '@/lib/productCardInfo';
 import ProductsContent from './ProductsContent';
 
 export const metadata: Metadata = {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 export default function ProductsPage() {
   return (
     <Suspense>
-      <ProductsContent />
+      <ProductsContent cardTiles={getAllProductCardTiles()} />
     </Suspense>
   );
 }

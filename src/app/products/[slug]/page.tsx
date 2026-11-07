@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 
 type Slug = keyof (typeof productsDetail)["fa"];
 
+const isSlug = (slug: string): slug is Slug => slug in productsDetail.fa;
+
 export function generateStaticParams() {
   return (Object.keys(productsDetail.fa) as Slug[]).map((slug) => ({ slug }));
 }
@@ -15,8 +17,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const product = productsDetail.fa[slug as Slug];
-  if (!product) return {};
+  if (!isSlug(slug)) return {};
+  const product = productsDetail.fa[slug];
   return {
     title: `${product.name} ${product.model}`,
     description: product.description,
@@ -29,8 +31,13 @@ export default async function ProductDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  if (!isSlug(slug)) notFound();
 
-  if (!productsDetail.fa[slug as Slug]) notFound();
-
-  return <ProductDetailContent slug={slug as Slug} />;
+  // Only this product's entries reach the client, not the whole catalog.
+  return (
+    <ProductDetailContent
+      slug={slug}
+      product={{ fa: productsDetail.fa[slug], en: productsDetail.en[slug] }}
+    />
+  );
 }

@@ -2,24 +2,22 @@
 
 import ProductDetailClient from "@/components/products/ProductDetailClient/ProductDetailClient";
 import { useLanguage } from "@/context/LanguageContext";
-import productsDetailRaw from "@/data/products-detail.json";
+import type productsDetailRaw from "@/data/products-detail.json";
 import productsPageRaw from "@/data/products-page.json";
+import type { Bilingual } from "@/types";
 
 type ProductDetail = (typeof productsDetailRaw)["fa"][keyof (typeof productsDetailRaw)["fa"]];
-type Slug = keyof (typeof productsDetailRaw)["fa"];
 
 interface Props {
-  slug: Slug;
+  slug: string;
+  product: Bilingual<ProductDetail>;
 }
 
-export default function ProductDetailContent({ slug }: Props) {
+export default function ProductDetailContent({ slug, product: bilingualProduct }: Props) {
   const { lang } = useLanguage();
 
-  const productsDetail = productsDetailRaw[lang] as Record<Slug, ProductDetail>;
-  const product = productsDetail[slug];
-
-  const pageData = productsPageRaw[lang];
-  const t = pageData.detail;
+  const product = bilingualProduct[lang];
+  const t = productsPageRaw[lang].detail;
 
   const breadcrumb = [
     { label: t.breadcrumb.home, href: "/" },

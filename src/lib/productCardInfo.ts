@@ -1,4 +1,5 @@
 import type { Lang } from "@/context/LanguageContext";
+import type { Bilingual } from "@/types";
 import productsDetailRaw from "@/data/products-detail.json";
 import productsRaw from "@/data/products.json";
 
@@ -186,4 +187,19 @@ export function getProductCardInfo(productId: string, lang: Lang): ProductCardIn
   }
 
   return { tiles };
+}
+
+/** Tiles for every catalog product, keyed by product id, in both languages. */
+export type ProductCardTilesById = Record<string, ProductCardTile[]>;
+
+/**
+ * Precomputes all card tiles on the server so the products page doesn't ship
+ * the full product database to the browser just to derive a few labels.
+ */
+export function getAllProductCardTiles(): Bilingual<ProductCardTilesById> {
+  const build = (lang: Lang): ProductCardTilesById =>
+    Object.fromEntries(
+      Object.keys(productsDetailRaw[lang]).map((id) => [id, getProductCardInfo(id, lang).tiles]),
+    );
+  return { fa: build("fa"), en: build("en") };
 }

@@ -8,6 +8,7 @@ import FilterTabs from "@/components/shared/FilterTabs/FilterTabs";
 import PageBanner from "@/components/shared/PageBanner/PageBanner";
 import ProductSearchBar from "@/components/products/ProductSearchBar/ProductSearchBar";
 import { useLanguage } from "@/context/LanguageContext";
+import type { ProductCardTilesById } from "@/lib/productCardInfo";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useMemo, useState } from "react";
@@ -32,6 +33,7 @@ interface Props {
   tabs: TabItem[];
   items: ProductItem[];
   cta: Cta;
+  cardTiles: ProductCardTilesById;
 }
 
 export default function ProductsPageClient({
@@ -40,6 +42,7 @@ export default function ProductsPageClient({
   tabs,
   items,
   cta,
+  cardTiles,
 }: Props) {
   const { lang } = useLanguage();
   const searchParams = useSearchParams();
@@ -128,7 +131,7 @@ export default function ProductsPageClient({
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.25 }}
                   >
-                    <ProductCard product={product} />
+                    <ProductCard product={product} tiles={cardTiles[product.id] ?? []} />
                   </motion.div>
                 ))
               )}

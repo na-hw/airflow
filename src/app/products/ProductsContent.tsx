@@ -2,14 +2,13 @@
 
 import { useLanguage } from '@/context/LanguageContext';
 import ProductsPageClient from '@/components/products/ProductsPageClient/ProductsPageClient';
+import type { ProductCardTilesById } from '@/lib/productCardInfo';
 import pageRaw from '@/data/products-page.json';
+import type { Bilingual } from '@/types';
 
-type PageData = typeof pageRaw.fa;
-type BillingualPage = { fa: PageData; en: PageData };
-
-export default function ProductsContent() {
+export default function ProductsContent({ cardTiles }: { cardTiles: Bilingual<ProductCardTilesById> }) {
   const { lang } = useLanguage();
-  const page = (pageRaw as unknown as BillingualPage)[lang];
+  const page = pageRaw[lang];
 
   return (
     <main>
@@ -19,6 +18,7 @@ export default function ProductsContent() {
         tabs={page.tabs}
         items={page.items}
         cta={page.cta}
+        cardTiles={cardTiles[lang]}
       />
     </main>
   );
