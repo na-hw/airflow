@@ -66,5 +66,6 @@
 
 /* ─── Responsive ──────────────────────────────────────────── */
 @media (max-width: 480px) {
-  .thumbnails { grid-template-columns: repeat(3, 1fr); }
+  /* Products carry four images: keep them on one row */
+  .thumbnails { grid-template-columns: repeat(4, 1fr); }
 }

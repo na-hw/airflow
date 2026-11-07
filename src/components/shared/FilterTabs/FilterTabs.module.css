@@ -35,6 +35,27 @@
   color: #fff !important;
 }
 
+/* ─── Mobile: one scrollable row instead of several wrapped rows ── */
+@media (max-width: 768px) {
+  .tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    /* Bleed to the screen edge so it reads as scrollable */
+    margin-inline: calc(var(--section-padding-x) * -1);
+    padding-inline: var(--section-padding-x);
+    padding-block: var(--space-1);
+  }
+
+  .tabs::-webkit-scrollbar { display: none; }
+
+  .tab {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+}
+
 /* ─── LTR Overrides ─────────────────────────────────────────── */
 :global([dir="ltr"]) .tabs {
   direction: ltr;

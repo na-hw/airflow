@@ -350,16 +350,21 @@
     align-items: flex-start;
   }
   .categoryGrid {
-    grid-template-columns: 1fr;
-    gap: var(--space-5);
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
   }
   .categoryCard {
-    min-height: 280px;
+    min-height: 200px;
+    border-radius: var(--radius-xl);
   }
   .categoryContent {
-    padding: var(--space-6);
+    padding: var(--space-4);
   }
   .categoryTitle {
-    font-size: var(--text-xl);
+    font-size: var(--text-base);
+  }
+  .categoryCta {
+    margin-top: var(--space-1);
+    font-size: var(--text-xs);
   }
 }
