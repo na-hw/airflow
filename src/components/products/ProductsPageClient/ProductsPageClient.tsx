@@ -15,9 +15,9 @@ import type { ProductItem } from "./ProductCard";
 import ProductCard from "./ProductCard";
 import styles from "./ProductsPageClient.module.css";
 
-const EMPTY_COPY = {
-  fa: "محصولی با این مشخصات یافت نشد.",
-  en: "No products match your search.",
+const COPY = {
+  fa: { empty: "محصولی با این مشخصات یافت نشد.", filterLabel: "دسته‌بندی محصولات" },
+  en: { empty: "No products match your search.", filterLabel: "Product category" },
 } as const;
 
 interface Cta {
@@ -100,13 +100,14 @@ export default function ProductsPageClient({
             tabs={tabs}
             activeTab={activeTab}
             onChange={handleTabChange}
+            label={COPY[lang].filterLabel}
           />
 
           {/* Grid */}
           <motion.div className={styles.grid} layout>
             <AnimatePresence mode="popLayout">
               {filtered.length === 0 ? (
-                <p className={styles.empty}>{EMPTY_COPY[lang]}</p>
+                <p className={styles.empty}>{COPY[lang].empty}</p>
               ) : (
                 filtered.map((product) => (
                   <motion.div

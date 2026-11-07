@@ -35,25 +35,61 @@
   color: #fff !important;
 }
 
-/* ─── Mobile: one scrollable row instead of several wrapped rows ── */
+/* ─── Mobile Dropdown ───────────────────────────────────────── */
+/* Matches the product search bar above it: same surface, border, radius. */
+.selectWrap {
+  display: none;
+  position: relative;
+  align-items: center;
+  margin-bottom: var(--space-6);
+}
+
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-card);
+  /* Room for the filter icon at the start and the chevron at the end */
+  padding-block: 0;
+  padding-inline: calc(var(--space-4) + 18px + var(--space-3));
+  width: 100%;
+  height: 52px;
+  color: var(--color-text-primary);
+  font-weight: var(--font-medium);
+  font-size: var(--text-base);
+  font-family: var(--font-primary);
+  transition: border-color var(--transition-fast);
+}
+
+.select:focus-visible {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.selectLeadIcon,
+.selectChevron {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.selectLeadIcon {
+  inset-inline-start: var(--space-4);
+  color: var(--color-primary-light);
+}
+
+.selectChevron {
+  inset-inline-end: var(--space-4);
+  color: var(--color-text-muted);
+}
+
 @media (max-width: 768px) {
-  .tabs {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-snap-type: x proximity;
-    scrollbar-width: none;
-    /* Bleed to the screen edge so it reads as scrollable */
-    margin-inline: calc(var(--section-padding-x) * -1);
-    padding-inline: var(--section-padding-x);
-    padding-block: var(--space-1);
-  }
-
-  .tabs::-webkit-scrollbar { display: none; }
-
-  .tab {
-    flex-shrink: 0;
-    scroll-snap-align: start;
-  }
+  .tabs { display: none; }
+  .selectWrap { display: flex; }
 }
 
 /* ─── LTR Overrides ─────────────────────────────────────────── */

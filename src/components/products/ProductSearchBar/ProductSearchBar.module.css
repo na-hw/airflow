@@ -54,6 +54,11 @@
   color: var(--color-text-primary);
 }
 
+@media (max-width: 768px) {
+  /* Sits directly above the category dropdown as one control group */
+  .wrap { margin-bottom: var(--space-3); }
+}
+
 @media (max-width: 640px) {
   .wrap {
     padding: var(--space-3) var(--space-4);

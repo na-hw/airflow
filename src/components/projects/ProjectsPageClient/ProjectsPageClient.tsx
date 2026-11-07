@@ -12,9 +12,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import styles from "./ProjectsPageClient.module.css";
 
-const EMPTY_COPY = {
-  fa: "پروژه‌ای در این دسته‌بندی یافت نشد.",
-  en: "No projects found in this category.",
+const COPY = {
+  fa: { empty: "پروژه‌ای در این دسته‌بندی یافت نشد.", filterLabel: "دسته‌بندی پروژه‌ها" },
+  en: { empty: "No projects found in this category.", filterLabel: "Project category" },
 } as const;
 
 interface Props {
@@ -40,6 +40,15 @@ export default function ProjectsPageClient({
   const filtered =
     activeTab === "all" ? items : items.filter((p) => p.category === activeTab);
 
+  // Count entries per category; hide categories without projects.
+  const tabsWithCount = tabs
+    .map((tab) => ({
+      ...tab,
+      count:
+        tab.id === "all" ? items.length : items.filter((p) => p.category === tab.id).length,
+    }))
+    .filter((tab) => tab.count > 0);
+
   return (
     <>
       <PageBanner
@@ -54,13 +63,18 @@ export default function ProjectsPageClient({
       <section className={styles.section}>
         <Container>
           {/* Tabs */}
-          <FilterTabs tabs={tabs} activeTab={activeTab} onChange={setActiveTab} />
+          <FilterTabs
+            tabs={tabsWithCount}
+            activeTab={activeTab}
+            onChange={setActiveTab}
+            label={COPY[lang].filterLabel}
+          />
 
           {/* Grid */}
           <motion.div className={styles.grid} layout>
             <AnimatePresence mode="popLayout">
               {filtered.length === 0 ? (
-                <p className={styles.empty}>{EMPTY_COPY[lang]}</p>
+                <p className={styles.empty}>{COPY[lang].empty}</p>
               ) : (
                 filtered.map((project) => (
                   <motion.div
