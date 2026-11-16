@@ -10,6 +10,8 @@ interface ButtonProps {
   size?: ButtonSize;
   textColor?: ButtonTextColor;
   href?: string;
+  /** Renders a plain download link instead of a client-side route. */
+  download?: boolean;
   loading?: boolean;
   disabled?: boolean;
   fullWidth?: boolean;
@@ -22,7 +24,7 @@ interface ButtonProps {
   ref?: Ref<HTMLButtonElement>;
 }
 
-const TEXT_COLOR_CLASS: Record<string, string> = {
+const TEXT_COLOR_CLASS: Partial<Record<ButtonTextColor, string>> = {
   white: styles.textWhite,
   light: styles.textLight,
   accent: styles.textAccent,
@@ -33,6 +35,7 @@ export default function Button({
   size = 'md',
   textColor = 'default',
   href,
+  download,
   loading,
   disabled,
   fullWidth,
@@ -63,9 +66,25 @@ export default function Button({
     </>
   );
 
-  if (href) {
+  if (href && download) {
     return (
-      <Link href={href} className={cls} aria-disabled={disabled} onClick={onClick}>
+      <a href={href} download className={cls} onClick={onClick}>
+        {content}
+      </a>
+    );
+  }
+
+  if (href) {
+    // A disabled link must not navigate, so drop the href and keep it out of the tab order.
+    if (disabled) {
+      return (
+        <a className={cls} aria-disabled="true" role="link" tabIndex={-1}>
+          {content}
+        </a>
+      );
+    }
+    return (
+      <Link href={href} className={cls} onClick={onClick}>
         {content}
       </Link>
     );

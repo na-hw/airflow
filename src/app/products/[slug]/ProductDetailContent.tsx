@@ -43,7 +43,8 @@ export default function ProductDetailContent({ slug, product: bilingualProduct }
         images={product.images}
         cta={{
           inquiry: { label: t.cta.inquiry, href: "/#contact" },
-          catalog: { label: t.cta.catalog, href: "#catalog" },
+          // Same file as the catalog entry on the resources page.
+          catalog: { label: t.cta.catalog, href: "/resources/catalog.pdf" },
         }}
         tabs={tabs}
         specs={product.specs}

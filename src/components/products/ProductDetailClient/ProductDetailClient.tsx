@@ -43,6 +43,7 @@ interface DocumentItem {
   name: string;
   size: string;
   type: string;
+  href: string;
 }
 
 interface Props {
@@ -144,6 +145,7 @@ export default function ProductDetailClient({
                 </Button>
                 <Button
                   href={cta.catalog.href}
+                  download
                   variant="outline"
                   size="lg"
                   iconStart={<Icon name="download" size={18} />}
@@ -202,13 +204,14 @@ export default function ProductDetailClient({
                             {doc.type} · {doc.size}
                           </span>
                         </div>
-                        <button
-                          type="button"
+                        <a
+                          href={doc.href}
+                          download
                           className={styles.docDownload}
                           aria-label={downloadLabel.replace("{name}", doc.name)}
                         >
                           <Icon name="download" size={18} />
-                        </button>
+                        </a>
                       </div>
                     ))}
                   </div>

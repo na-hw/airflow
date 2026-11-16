@@ -54,9 +54,9 @@
       },
       "dimensionsNote": "نقشه‌های فنی دقیق در کاتالوگ محصول موجود است.",
       "documents": [
-        { "name": "کاتالوگ محصول LS-300",     "size": "2.4 MB", "type": "PDF" },
-        { "name": "دفترچه نصب و راه‌اندازی",  "size": "1.1 MB", "type": "PDF" },
-        { "name": "جدول مشخصات فنی",           "size": "0.6 MB", "type": "PDF" }
+        { "name": "کاتالوگ محصولات",         "size": "۴.۲ مگابایت", "type": "PDF", "href": "/resources/catalog.pdf" },
+        { "name": "راهنمای نصب و راه‌اندازی", "size": "۲.۱ مگابایت", "type": "PDF", "href": "/resources/installation-guide.pdf" },
+        { "name": "استانداردها و گواهینامه‌ها", "size": "۱.۸ مگابایت", "type": "PDF", "href": "/resources/standards.pdf" }
       ],
       "downloadLabel": "دانلود {name}"
     }
@@ -116,9 +116,9 @@
       },
       "dimensionsNote": "Detailed technical drawings are available in the product catalog.",
       "documents": [
-        { "name": "LS-300 Product Catalog",        "size": "2.4 MB", "type": "PDF" },
-        { "name": "Installation & Setup Manual",   "size": "1.1 MB", "type": "PDF" },
-        { "name": "Technical Specification Sheet", "size": "0.6 MB", "type": "PDF" }
+        { "name": "Product Catalog",                "size": "4.2 MB", "type": "PDF", "href": "/resources/catalog.pdf" },
+        { "name": "Installation & Setup Guide",     "size": "2.1 MB", "type": "PDF", "href": "/resources/installation-guide.pdf" },
+        { "name": "Standards & Certificates",       "size": "1.8 MB", "type": "PDF", "href": "/resources/standards.pdf" }
       ],
       "downloadLabel": "Download {name}"
     }

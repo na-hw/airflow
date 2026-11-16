@@ -116,7 +116,8 @@
   align-items: center;
   flex-shrink: 0;
 }
-.btn:disabled { opacity: var(--opacity-disabled); cursor: not-allowed; }
+.btn:disabled,
+.btn[aria-disabled="true"] { opacity: var(--opacity-disabled); cursor: not-allowed; }
 .loading { pointer-events: none; }
 
 .spinner {
