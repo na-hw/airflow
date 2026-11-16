@@ -11,8 +11,7 @@
       { "id": "cad",       "icon": "file-dwg",     "type": "DWG",     "title": "فایل‌های CAD",            "description": "نقشه‌های فنی برای طراحی",                         "href": "/resources/cad-files.zip",        "size": "۱۲.۸ مگابایت" },
       { "id": "bim",       "icon": "file-3d",      "type": "PDF",     "title": "مدل‌های BIM",             "description": "مدل‌های سه‌بعدی برای نرم‌افزارهای BIM",           "href": "/resources/bim-models.zip",       "size": "۲۳.۵ مگابایت" },
       { "id": "install",   "icon": "file-text",    "type": "PDF",     "title": "راهنمای نصب",             "description": "دستورالعمل کامل نصب و راه‌اندازی",                "href": "/resources/installation-guide.pdf","size": "۲.۱ مگابایت" },
-      { "id": "standards", "icon": "file-check",   "type": "PDF",     "title": "استانداردها",             "description": "گواهینامه‌ها و استانداردهای بین‌المللی",           "href": "/resources/standards.pdf",        "size": "۱.۸ مگابایت" },
-      { "id": "articles",  "icon": "file-article", "type": "آنلاین",  "title": "مقالات فنی",              "description": "مقالات تخصصی حوزه تهویه و HVAC",                  "href": "/resources/articles",             "size": null }
+      { "id": "standards", "icon": "file-check",   "type": "PDF",     "title": "استانداردها",             "description": "گواهینامه‌ها و استانداردهای بین‌المللی",           "href": "/resources/standards.pdf",        "size": "۱.۸ مگابایت" }
     ]
   },
   "en": {
@@ -27,8 +26,7 @@
       { "id": "cad",       "icon": "file-dwg",     "type": "DWG",    "title": "CAD Files",              "description": "Technical drawings for design",                        "href": "/resources/cad-files.zip",         "size": "12.8 MB"  },
       { "id": "bim",       "icon": "file-3d",      "type": "PDF",    "title": "BIM Models",             "description": "3D models for BIM software",                           "href": "/resources/bim-models.zip",        "size": "23.5 MB"  },
       { "id": "install",   "icon": "file-text",    "type": "PDF",    "title": "Installation Guide",     "description": "Full installation and commissioning instructions",       "href": "/resources/installation-guide.pdf","size": "2.1 MB"   },
-      { "id": "standards", "icon": "file-check",   "type": "PDF",    "title": "Standards",              "description": "Certificates and international standards",               "href": "/resources/standards.pdf",         "size": "1.8 MB"   },
-      { "id": "articles",  "icon": "file-article", "type": "Online", "title": "Technical Articles",     "description": "Specialist articles on ventilation and HVAC",            "href": "/resources/articles",              "size": null }
+      { "id": "standards", "icon": "file-check",   "type": "PDF",    "title": "Standards",              "description": "Certificates and international standards",               "href": "/resources/standards.pdf",         "size": "1.8 MB"   }
     ]
   }
 }

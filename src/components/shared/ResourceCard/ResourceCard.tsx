@@ -12,12 +12,10 @@ interface ResourceCardProps {
 const DOWNLOADABLE_FILE_PATTERN = /\.(pdf|zip|dwg)$/i;
 
 export default function ResourceCard({ resource }: ResourceCardProps) {
-  return (
-    <Link
-      href={resource.href}
-      className={styles.card}
-      download={DOWNLOADABLE_FILE_PATTERN.test(resource.href)}
-    >
+  const isFile = DOWNLOADABLE_FILE_PATTERN.test(resource.href);
+
+  const content = (
+    <>
       <div className={styles.cardTop}>
         <div className={styles.iconWrap}>
           <div className={styles.svgWrap}>
@@ -31,9 +29,23 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
         <p className={styles.cardDesc}>{resource.description}</p>
       </div>
       {resource.size && <span className={styles.size}>{resource.size}</span>}
-      <div className={styles.downloadIcon}>
-        <Icon name="download" size={18} />
-      </div>
+      {isFile && (
+        <div className={styles.downloadIcon}>
+          <Icon name="download" size={18} />
+        </div>
+      )}
+    </>
+  );
+
+  // Files are plain download links; next/link would try to prefetch them as pages.
+  // The id lets other pages link straight to a card, e.g. /resources#catalog.
+  return isFile ? (
+    <a id={resource.id} href={resource.href} className={styles.card} download>
+      {content}
+    </a>
+  ) : (
+    <Link id={resource.id} href={resource.href} className={styles.card}>
+      {content}
     </Link>
   );
 }

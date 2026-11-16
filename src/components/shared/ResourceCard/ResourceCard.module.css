@@ -1,4 +1,5 @@
 .card {
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
@@ -109,7 +110,8 @@
   transition: all var(--transition-base);
 }
 
-.card:hover .downloadIcon {
+.card:hover .downloadIcon,
+.card:focus-visible .downloadIcon {
   opacity: 1;
   transform: translateY(0);
   color: var(--color-primary-light);
@@ -120,4 +122,12 @@
 :global([dir="ltr"]) .downloadIcon {
   left: auto;
   right: var(--space-4);
+}
+
+/* Touch screens have no hover, so the download hint is always shown. */
+@media (hover: none) {
+  .downloadIcon {
+    opacity: 1;
+    transform: none;
+  }
 }

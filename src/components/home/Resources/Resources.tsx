@@ -10,9 +10,11 @@ import styles from "./Resources.module.css";
 
 interface ResourcesProps {
   data: ResourcesData;
+  /** Hidden on the resources page, where the page banner carries the title. */
+  showHeader?: boolean;
 }
 
-export default function Resources({ data }: ResourcesProps) {
+export default function Resources({ data, showHeader = true }: ResourcesProps) {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -23,13 +25,15 @@ export default function Resources({ data }: ResourcesProps) {
       aria-label={data.section.title}
     >
       <Container>
-        <div className={styles.sectionHeader}>
-          <SectionTitle
-            title={data.section.title}
-            subtitle={data.section.subtitle}
-            align="start"
-          />
-        </div>
+        {showHeader && (
+          <div className={styles.sectionHeader}>
+            <SectionTitle
+              title={data.section.title}
+              subtitle={data.section.subtitle}
+              align="start"
+            />
+          </div>
+        )}
         <div className={styles.grid}>
           {data.items.map((item, i) => (
             <motion.div
