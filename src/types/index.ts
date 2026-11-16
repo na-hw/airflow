@@ -58,7 +58,8 @@ export interface Partner {
   id: string;
   name: string;
   logo: string;
-  href: string;
+  /** Partner website; logos without one render as plain images. */
+  href?: string;
 }
 
 export interface PartnersData {

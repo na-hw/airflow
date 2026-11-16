@@ -4,7 +4,7 @@ import styles from "./Partners.module.css";
 interface PartnerLogoProps {
   name: string;
   src: string;
-  href: string;
+  href?: string;
 }
 
 export default function PartnerLogo({ name, src, href }: PartnerLogoProps) {

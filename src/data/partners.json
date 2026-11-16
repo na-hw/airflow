@@ -2,27 +2,27 @@
   "fa": {
     "title": "مورد اعتماد شرکت‌های پیشرو در ایران",
     "items": [
-      { "id": "iranmall",    "name": "ایران مال",        "logo": "/images/partners/iranmall.svg",     "href": "#" },
-      { "id": "digiplus",    "name": "دیجی‌کالا",        "logo": "/images/partners/digikala.svg",     "href": "#" },
-      { "id": "milad-hosp",  "name": "بیمارستان میلاد",  "logo": "/images/partners/miladhospital.svg","href": "#" },
-      { "id": "milad-tower", "name": "برج میلاد",        "logo": "/images/partners/miladtower.svg",   "href": "#" },
-      { "id": "baran",       "name": "باران خودرو",      "logo": "/images/partners/baran.svg",        "href": "#" },
-      { "id": "iran-khodro", "name": "ایران خودرو",      "logo": "/images/partners/irankhodro.svg",   "href": "#" },
-      { "id": "mapna",       "name": "مپنا",             "logo": "/images/partners/mapna.svg",        "href": "#" },
-      { "id": "esfahan",     "name": "فولاد اصفهان",     "logo": "/images/partners/esfahan.svg",      "href": "#" }
+      { "id": "iranmall",    "name": "ایران مال",        "logo": "/images/partners/iranmall.svg" },
+      { "id": "digiplus",    "name": "دیجی‌کالا",        "logo": "/images/partners/digikala.svg" },
+      { "id": "milad-hosp",  "name": "بیمارستان میلاد",  "logo": "/images/partners/miladhospital.svg" },
+      { "id": "milad-tower", "name": "برج میلاد",        "logo": "/images/partners/miladtower.svg" },
+      { "id": "baran",       "name": "باران خودرو",      "logo": "/images/partners/baran.svg" },
+      { "id": "iran-khodro", "name": "ایران خودرو",      "logo": "/images/partners/irankhodro.svg" },
+      { "id": "mapna",       "name": "مپنا",             "logo": "/images/partners/mapna.svg" },
+      { "id": "esfahan",     "name": "فولاد اصفهان",     "logo": "/images/partners/esfahan.svg" }
     ]
   },
   "en": {
     "title": "Trusted by Iran's Leading Companies",
     "items": [
-      { "id": "iranmall",    "name": "Iran Mall",         "logo": "/images/partners/iranmall.svg",     "href": "#" },
-      { "id": "digiplus",    "name": "Digikala",          "logo": "/images/partners/digikala.svg",     "href": "#" },
-      { "id": "milad-hosp",  "name": "Milad Hospital",    "logo": "/images/partners/miladhospital.svg","href": "#" },
-      { "id": "milad-tower", "name": "Milad Tower",       "logo": "/images/partners/miladtower.svg",   "href": "#" },
-      { "id": "baran",       "name": "Baran Auto",        "logo": "/images/partners/baran.svg",        "href": "#" },
-      { "id": "iran-khodro", "name": "Iran Khodro",       "logo": "/images/partners/irankhodro.svg",   "href": "#" },
-      { "id": "mapna",       "name": "MAPNA Group",       "logo": "/images/partners/mapna.svg",        "href": "#" },
-      { "id": "esfahan",     "name": "Esfahan Steel",     "logo": "/images/partners/esfahan.svg",      "href": "#" }
+      { "id": "iranmall",    "name": "Iran Mall",         "logo": "/images/partners/iranmall.svg" },
+      { "id": "digiplus",    "name": "Digikala",          "logo": "/images/partners/digikala.svg" },
+      { "id": "milad-hosp",  "name": "Milad Hospital",    "logo": "/images/partners/miladhospital.svg" },
+      { "id": "milad-tower", "name": "Milad Tower",       "logo": "/images/partners/miladtower.svg" },
+      { "id": "baran",       "name": "Baran Auto",        "logo": "/images/partners/baran.svg" },
+      { "id": "iran-khodro", "name": "Iran Khodro",       "logo": "/images/partners/irankhodro.svg" },
+      { "id": "mapna",       "name": "MAPNA Group",       "logo": "/images/partners/mapna.svg" },
+      { "id": "esfahan",     "name": "Esfahan Steel",     "logo": "/images/partners/esfahan.svg" }
     ]
   }
 }
