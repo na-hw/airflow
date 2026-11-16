@@ -225,7 +225,10 @@
 .specValue {
   color: var(--color-text-primary);
   font-weight: var(--font-normal);
-  direction: ltr;
+  /* Values mix Persian words with Latin units ("150 تا 600 m³/h") or are
+     purely Latin ("200 / 300 / 400 mm"); each one takes its direction from
+     its own first letter so neither kind gets reordered. */
+  unicode-bidi: plaintext;
   text-align: right;
 }
 
