@@ -50,3 +50,15 @@ test("flags submissions that filled in the hidden honeypot field", () => {
   assert.equal(isLikelySpam({ website: "" }), false);
   assert.equal(isLikelySpam({ website: "https://spam.example" }), true);
 });
+
+test("asks for empty required fields instead of reporting a length error", () => {
+  const result = getContactSchema("fa").safeParse({ ...valid, name: "  ", email: "" });
+  assert.equal(result.success, false);
+  // The form shows the first issue per field.
+  const byField: Record<string, string> = {};
+  for (const issue of !result.success ? result.error.issues : []) {
+    byField[String(issue.path[0])] ??= issue.message;
+  }
+  assert.equal(byField.name, "این فیلد الزامی است");
+  assert.equal(byField.email, "این فیلد الزامی است");
+});

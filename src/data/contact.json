@@ -13,12 +13,12 @@
       { "icon": "clock",    "label": "ساعات کاری",   "value": "شنبه تا چهارشنبه ۸–۱۷ | پنج‌شنبه ۸–۱۳" }
     ],
     "fields": [
-      { "id": "name",        "label": "نام و نام خانوادگی", "type": "text",     "placeholder": "نام و نام خانوادگی",                 "required": true  },
-      { "id": "email",       "label": "ایمیل",               "type": "email",    "placeholder": "ایمیل",                               "required": true  },
-      { "id": "phone",       "label": "شماره تماس",          "type": "tel",      "placeholder": "شماره تماس",                          "required": true  },
-      { "id": "company",     "label": "شرکت / سازمان",       "type": "text",     "placeholder": "شرکت / سازمان",                       "required": false },
+      { "id": "name",        "label": "نام و نام خانوادگی", "type": "text",     "placeholder": "مثلاً سارا احمدی",                     "required": true  },
+      { "id": "email",       "label": "ایمیل",               "type": "email",    "placeholder": "name@company.com",                     "required": true  },
+      { "id": "phone",       "label": "شماره تماس",          "type": "tel",      "placeholder": "۰۹۱۲ ۱۲۳ ۴۵۶۷",                        "required": true  },
+      { "id": "company",     "label": "شرکت / سازمان",       "type": "text",     "placeholder": "اختیاری",                              "required": false },
       { "id": "projectType", "label": "نوع پروژه",           "type": "select",   "placeholder": "انتخاب کنید",                         "required": true  },
-      { "id": "message",     "label": "توضیحات پروژه",       "type": "textarea", "placeholder": "توضیحات پروژه خود را بنویسید...",    "required": true  }
+      { "id": "message",     "label": "توضیحات پروژه",       "type": "textarea", "placeholder": "نوع ساختمان، متراژ، محصولات مورد نیاز و زمان‌بندی","required": true  }
     ],
     "projectTypes": [
       "ساختمان اداری",
@@ -55,12 +55,12 @@
       { "icon": "clock",    "label": "Working Hours",    "value": "Sat–Wed 8 AM–5 PM | Thu 8 AM–1 PM (Tehran time)" }
     ],
     "fields": [
-      { "id": "name",        "label": "Full Name",               "type": "text",     "placeholder": "Full Name",                     "required": true  },
-      { "id": "email",       "label": "Email",                   "type": "email",    "placeholder": "Email",                         "required": true  },
-      { "id": "phone",       "label": "Phone Number",            "type": "tel",      "placeholder": "Phone Number",                  "required": true  },
-      { "id": "company",     "label": "Company / Organization",  "type": "text",     "placeholder": "Company / Organization",        "required": false },
+      { "id": "name",        "label": "Full Name",               "type": "text",     "placeholder": "e.g. John Smith",               "required": true  },
+      { "id": "email",       "label": "Email",                   "type": "email",    "placeholder": "name@company.com",              "required": true  },
+      { "id": "phone",       "label": "Phone Number",            "type": "tel",      "placeholder": "+971 50 123 4567",              "required": true  },
+      { "id": "company",     "label": "Company / Organization",  "type": "text",     "placeholder": "Optional",                      "required": false },
       { "id": "projectType", "label": "Project Type",            "type": "select",   "placeholder": "Select",                        "required": true  },
-      { "id": "message",     "label": "Project Description",     "type": "textarea", "placeholder": "Describe your project...",      "required": true  }
+      { "id": "message",     "label": "Project Description",     "type": "textarea", "placeholder": "Building type, size, products needed and timeline","required": true  }
     ],
     "projectTypes": [
       "Office Building",

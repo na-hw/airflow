@@ -16,7 +16,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import type { ContactData } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import styles from "./ContactForm.module.css";
 
@@ -31,6 +31,14 @@ export default function ContactForm({ data }: ContactFormProps) {
   const [status, setStatus] = useState<
     "idle" | "loading" | "success" | "error"
   >("idle");
+
+  const successRef = useRef<HTMLDivElement>(null);
+
+  // The form (and its focused submit button) is gone after sending, so keep
+  // keyboard and screen-reader users on the confirmation.
+  useEffect(() => {
+    if (status === "success") successRef.current?.focus();
+  }, [status]);
 
   const {
     register,
@@ -103,7 +111,12 @@ export default function ContactForm({ data }: ContactFormProps) {
           >
             <div className={styles.formCard}>
               {status === "success" ? (
-                <div className={styles.successMsg} role="status">
+                <div
+                  className={styles.successMsg}
+                  role="status"
+                  tabIndex={-1}
+                  ref={successRef}
+                >
                   <Icon
                     name="check-circle"
                     size={56}

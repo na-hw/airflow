@@ -1,10 +1,11 @@
 import { z } from 'zod';
 import type { Lang } from '@/context/LanguageContext';
 
-type MessageKey = 'name' | 'email' | 'phone' | 'projectType' | 'message' | 'tooLong';
+type MessageKey = 'required' | 'name' | 'email' | 'phone' | 'projectType' | 'message' | 'tooLong';
 
 const messages: Record<Lang, Record<MessageKey, string>> = {
   fa: {
+    required:    'این فیلد الزامی است',
     name:        'نام باید حداقل ۲ کاراکتر باشد',
     email:       'ایمیل معتبر نیست',
     phone:       'شماره تلفن معتبر نیست',
@@ -13,6 +14,7 @@ const messages: Record<Lang, Record<MessageKey, string>> = {
     tooLong:     'متن وارد شده بیش از حد طولانی است',
   },
   en: {
+    required:    'This field is required',
     name:        'Name must be at least 2 characters',
     email:       'Invalid email address',
     phone:       'Invalid phone number',
@@ -35,17 +37,23 @@ export const CONTACT_LIMITS = {
 export function getContactSchema(lang: Lang) {
   const m = messages[lang];
   return z.object({
-    name:        z.string().trim().min(2, m.name).max(CONTACT_LIMITS.name, m.tooLong),
-    email:       z.email(m.email).max(CONTACT_LIMITS.email, m.tooLong),
+    name:        z.string().trim().min(1, m.required).min(2, m.name).max(CONTACT_LIMITS.name, m.tooLong),
+    email:       z
+      .string()
+      .trim()
+      .min(1, m.required)
+      .max(CONTACT_LIMITS.email, m.tooLong)
+      .pipe(z.email(m.email)),
     phone:       z
       .string()
       .trim()
+      .min(1, m.required)
       .min(10, m.phone)
       .max(CONTACT_LIMITS.phone, m.phone)
       .regex(/^[\d\s\-+()۰-۹]+$/, m.phone),
     company:     z.string().trim().max(CONTACT_LIMITS.company, m.tooLong).optional(),
     projectType: z.string().trim().min(1, m.projectType).max(CONTACT_LIMITS.projectType, m.tooLong),
-    message:     z.string().trim().min(10, m.message).max(CONTACT_LIMITS.message, m.tooLong),
+    message:     z.string().trim().min(1, m.required).min(10, m.message).max(CONTACT_LIMITS.message, m.tooLong),
     // Honeypot: hidden from people, so only bots fill it in.
     website:     z.string().max(200).optional(),
   });

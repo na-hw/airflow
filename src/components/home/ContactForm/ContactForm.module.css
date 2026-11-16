@@ -150,3 +150,7 @@
   height: 1px;
   overflow: hidden;
 }
+
+.successMsg:focus {
+  outline: none;
+}

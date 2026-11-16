@@ -71,3 +71,15 @@
     font-size: 16px;
   }
 }
+
+/* Emails and phone numbers are typed left to right; in the RTL layout they
+   stay right-aligned so they line up with the other fields. */
+.input[type="email"],
+.input[type="tel"] {
+  direction: ltr;
+}
+
+:global([dir="rtl"]) .input[type="email"],
+:global([dir="rtl"]) .input[type="tel"] {
+  text-align: right;
+}
