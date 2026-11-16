@@ -95,6 +95,18 @@ export default function Header() {
     return () => mq.removeEventListener("change", handler);
   }, []);
 
+  // Escape closes the menu and hands focus back to the menu button.
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      closeMobileMenu();
+      document.querySelector<HTMLElement>('[aria-controls="mobile-menu"]')?.focus();
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [mobileOpen]);
+
   useEffect(() => {
     if (mobileOpen) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "";
