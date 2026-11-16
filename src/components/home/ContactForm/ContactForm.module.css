@@ -141,3 +141,12 @@
     padding: var(--space-5);
   }
 }
+
+/* Spam trap: kept in the DOM for bots, out of sight and reach for people. */
+.honeypot {
+  position: absolute;
+  inset-inline-start: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

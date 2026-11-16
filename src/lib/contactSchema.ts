@@ -46,7 +46,14 @@ export function getContactSchema(lang: Lang) {
     company:     z.string().trim().max(CONTACT_LIMITS.company, m.tooLong).optional(),
     projectType: z.string().trim().min(1, m.projectType).max(CONTACT_LIMITS.projectType, m.tooLong),
     message:     z.string().trim().min(10, m.message).max(CONTACT_LIMITS.message, m.tooLong),
+    // Honeypot: hidden from people, so only bots fill it in.
+    website:     z.string().max(200).optional(),
   });
+}
+
+/** True when the hidden honeypot field was filled in, i.e. the sender is a bot. */
+export function isLikelySpam(values: { website?: string }): boolean {
+  return Boolean(values.website?.trim());
 }
 
 export type ContactFormValues = z.infer<ReturnType<typeof getContactSchema>>;

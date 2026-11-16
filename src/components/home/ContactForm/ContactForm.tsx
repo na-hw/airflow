@@ -204,6 +204,18 @@ export default function ContactForm({ data }: ContactFormProps) {
                     maxLength={CONTACT_LIMITS.message}
                     {...register("message")}
                   />
+                  {/* Honeypot: invisible to people and screen readers, filled in only by bots. */}
+                  <div className={styles.honeypot} aria-hidden>
+                    <label>
+                      Website
+                      <input
+                        type="text"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        {...register("website")}
+                      />
+                    </label>
+                  </div>
                   {status === "error" && (
                     <p className={styles.errorMsg} role="alert">
                       {data.submit.error}

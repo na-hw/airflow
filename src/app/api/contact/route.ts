@@ -1,11 +1,10 @@
-import { getContactSchema } from "@/lib/contactSchema";
+import { getContactSchema, isLikelySpam } from "@/lib/contactSchema";
 import { createRateLimiter } from "@/lib/rateLimit";
 import type { NextRequest } from "next/server";
 import { Resend } from "resend";
 
 const contactSchema = getContactSchema("en");
 
-const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "ahmadi@neoskop.de";
 const FROM_EMAIL =
   process.env.CONTACT_FROM_EMAIL ?? "Airflow Contact Form <onboarding@resend.dev>";
 
@@ -41,9 +40,17 @@ const row = (label: string, value: string) =>
 const jsonError = (error: string, status: number) =>
   Response.json({ error }, { status });
 
+/** Client IP as reported by the host's proxy (Vercel sets x-real-ip). */
+function clientIp(request: NextRequest): string {
+  return (
+    request.headers.get("x-real-ip")?.trim() ||
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    "unknown"
+  );
+}
+
 export async function POST(request: NextRequest) {
-  const ip =
-    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  const ip = clientIp(request);
 
   if (process.env.NODE_ENV === "production" && isRateLimited(ip)) {
     return jsonError("Too many requests. Please wait 10 minutes.", 429);
@@ -59,9 +66,15 @@ export async function POST(request: NextRequest) {
     return jsonError("Invalid form data.", 422);
   }
 
+  // Answer bots as if it worked, so they get no signal to adapt.
+  if (isLikelySpam(parsed.data)) {
+    return Response.json({ ok: true });
+  }
+
   const client = getResend();
-  if (!client) {
-    console.error("[contact] RESEND_API_KEY is not configured.");
+  const toEmail = process.env.CONTACT_TO_EMAIL;
+  if (!client || !toEmail) {
+    console.error("[contact] RESEND_API_KEY or CONTACT_TO_EMAIL is not configured.");
     return jsonError("Email could not be sent.", 500);
   }
 
@@ -70,7 +83,7 @@ export async function POST(request: NextRequest) {
   try {
     const { error } = await client.emails.send({
       from: FROM_EMAIL,
-      to: TO_EMAIL,
+      to: toEmail,
       replyTo: email,
       subject: toSubjectText(`New inquiry: ${projectType} – ${name}`),
       html: `

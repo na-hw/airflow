@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { CONTACT_LIMITS, getContactSchema } from "../contactSchema.ts";
+import { CONTACT_LIMITS, getContactSchema, isLikelySpam } from "../contactSchema.ts";
 
 const valid = {
   name: "Sara Ahmadi",
@@ -43,4 +43,10 @@ test("uses localized error messages", () => {
   const result = getContactSchema("fa").safeParse({ ...valid, email: "nope" });
   assert.equal(result.success, false);
   assert.equal(!result.success && result.error.issues[0].message, "ایمیل معتبر نیست");
+});
+
+test("flags submissions that filled in the hidden honeypot field", () => {
+  assert.equal(isLikelySpam({}), false);
+  assert.equal(isLikelySpam({ website: "" }), false);
+  assert.equal(isLikelySpam({ website: "https://spam.example" }), true);
 });
