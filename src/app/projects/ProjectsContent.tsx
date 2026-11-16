@@ -9,7 +9,7 @@ import pageRaw from '@/data/projects-page.json';
 type ProjectsData = typeof projectsRaw.fa;
 type PageData = typeof pageRaw.fa;
 
-export default function ProjectsContent() {
+export default function ProjectsContent({ initialCategory }: { initialCategory?: string }) {
   const { lang } = useLanguage();
 
   const projects = (projectsRaw as unknown as Bilingual<ProjectsData>)[lang];
@@ -24,6 +24,7 @@ export default function ProjectsContent() {
         pageDescription={page.header.description}
         tabs={page.tabs}
         items={projects.items as unknown as Project[]}
+        initialCategory={initialCategory}
       />
     </main>
   );

@@ -9,6 +9,15 @@ export const metadata: Metadata = pageMetadata({
   path: '/projects',
 });
 
-export default function ProjectsPage() {
-  return <ProjectsContent />;
+export default async function ProjectsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  // Lets links such as the footer's open the page already filtered.
+  const { category } = await searchParams;
+  const initialCategory = typeof category === 'string' ? category : undefined;
+
+  // Remount when a link navigates to another category.
+  return <ProjectsContent key={initialCategory ?? 'all'} initialCategory={initialCategory} />;
 }

@@ -11,14 +11,14 @@
     },
     "tabs": [
       { "id": "all",        "label": "همه پروژه‌ها" },
-      { "id": "تجاری",      "label": "تجاری"        },
-      { "id": "اداری",      "label": "اداری"        },
-      { "id": "درمانی",     "label": "درمانی"       },
-      { "id": "صنعتی",      "label": "صنعتی"        },
-      { "id": "هتل",        "label": "هتل"          },
-      { "id": "آموزشی",     "label": "آموزشی"       },
-      { "id": "حمل‌ونقل",   "label": "حمل‌ونقل"    },
-      { "id": "فرودگاهی",   "label": "فرودگاهی"    }
+      { "id": "commercial",      "label": "تجاری"        },
+      { "id": "office",      "label": "اداری"        },
+      { "id": "healthcare",     "label": "درمانی"       },
+      { "id": "industrial",      "label": "صنعتی"        },
+      { "id": "hotel",        "label": "هتل"          },
+      { "id": "education",     "label": "آموزشی"       },
+      { "id": "transport",   "label": "حمل‌ونقل"    },
+      { "id": "airport",   "label": "فرودگاهی"    }
     ],
     "detail": {
       "breadcrumb": { "home": "خانه", "projects": "پروژه‌ها" },
@@ -58,14 +58,14 @@
     },
     "tabs": [
       { "id": "all",          "label": "All Projects" },
-      { "id": "Commercial",   "label": "Commercial"   },
-      { "id": "Office",       "label": "Office"       },
-      { "id": "Healthcare",   "label": "Healthcare"   },
-      { "id": "Industrial",   "label": "Industrial"   },
-      { "id": "Hotel",        "label": "Hotel"        },
-      { "id": "Education",    "label": "Education"    },
-      { "id": "Transport",    "label": "Transport"    },
-      { "id": "Airport",      "label": "Airport"      }
+      { "id": "commercial",   "label": "Commercial"   },
+      { "id": "office",       "label": "Office"       },
+      { "id": "healthcare",   "label": "Healthcare"   },
+      { "id": "industrial",   "label": "Industrial"   },
+      { "id": "hotel",        "label": "Hotel"        },
+      { "id": "education",    "label": "Education"    },
+      { "id": "transport",    "label": "Transport"    },
+      { "id": "airport",      "label": "Airport"      }
     ],
     "detail": {
       "breadcrumb": { "home": "Home", "projects": "Projects" },

@@ -24,6 +24,8 @@ interface Props {
   pageDescription: string;
   tabs: TabItem[];
   items: Project[];
+  /** Category from `?category=`; unknown values fall back to all projects. */
+  initialCategory?: string;
 }
 
 export default function ProjectsPageClient({
@@ -33,19 +35,22 @@ export default function ProjectsPageClient({
   pageDescription,
   tabs,
   items,
+  initialCategory,
 }: Props) {
   const { lang } = useLanguage();
-  const [activeTab, setActiveTab] = useState("all");
+  const [activeTab, setActiveTab] = useState(
+    initialCategory && tabs.some((tab) => tab.id === initialCategory) ? initialCategory : "all",
+  );
 
   const filtered =
-    activeTab === "all" ? items : items.filter((p) => p.category === activeTab);
+    activeTab === "all" ? items : items.filter((p) => p.categoryId === activeTab);
 
   // Count entries per category; hide categories without projects.
   const tabsWithCount = tabs
     .map((tab) => ({
       ...tab,
       count:
-        tab.id === "all" ? items.length : items.filter((p) => p.category === tab.id).length,
+        tab.id === "all" ? items.length : items.filter((p) => p.categoryId === tab.id).length,
     }))
     .filter((tab) => tab.count > 0);
 

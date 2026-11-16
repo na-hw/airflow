@@ -140,7 +140,10 @@ export interface BestSellersData {
 export interface Project {
   id: string;
   image: string;
+  /** Display label, in the page language. */
   category: string;
+  /** Language-neutral key used by filters and `/projects?category=` links. */
+  categoryId: string;
   title: string;
   location: string;
   href: string;
@@ -248,7 +251,6 @@ export interface FooterData {
   columns: FooterColumn[];
   contact: { title: string; items: ContactInfo[] };
   copyright: string;
-  termsLink: string;
 }
 
 // ─── Shared ───────────────────────────────────────────────────
