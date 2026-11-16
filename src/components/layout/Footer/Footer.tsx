@@ -113,9 +113,6 @@ export default function Footer() {
           <p className={styles.copyright} suppressHydrationWarning>
             {data.copyright.replace("{year}", currentYear(lang))}
           </p>
-          <Link href="/" className={styles.termsLink}>
-            {data.termsLink}
-          </Link>
         </div>
       </div>
     </footer>

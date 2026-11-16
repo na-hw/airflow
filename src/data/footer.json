@@ -53,23 +53,23 @@
         "id": "solutions",
         "title": "راهکارها",
         "links": [
-          { "label": "ساختمان‌های اداری", "href": "/solutions/office" },
-          { "label": "مراکز تجاری", "href": "/solutions/commercial" },
-          { "label": "مجتمع‌های مسکونی", "href": "/solutions/residential" },
-          { "label": "فضاهای صنعتی", "href": "/solutions/industrial" },
-          { "label": "مراکز درمانی", "href": "/solutions/healthcare" },
-          { "label": "تاسیسات عمومی", "href": "/solutions/public" }
+          { "label": "ساختمان‌های اداری", "href": "/projects?category=office" },
+          { "label": "مراکز تجاری", "href": "/projects?category=commercial" },
+          { "label": "هتل‌ها", "href": "/projects?category=hotel" },
+          { "label": "فضاهای صنعتی", "href": "/projects?category=industrial" },
+          { "label": "مراکز درمانی", "href": "/projects?category=healthcare" },
+          { "label": "مراکز آموزشی", "href": "/projects?category=education" }
         ]
       },
       {
         "id": "resources",
         "title": "منابع",
         "links": [
-          { "label": "کاتالوگ‌ها", "href": "/resources/catalog" },
-          { "label": "نقشه‌های فنی", "href": "/resources/technical" },
-          { "label": "مقالات آموزشی", "href": "/resources/articles" },
-          { "label": "استانداردها", "href": "/resources/standards" },
-          { "label": "ویدیوها", "href": "/resources/videos" }
+          { "label": "کاتالوگ‌ها", "href": "/resources#catalog" },
+          { "label": "نقشه‌های فنی", "href": "/resources#cad" },
+          { "label": "راهنمای نصب", "href": "/resources#install" },
+          { "label": "استانداردها", "href": "/resources#standards" },
+          { "label": "مدل‌های BIM", "href": "/resources#bim" }
         ]
       }
     ],
@@ -91,8 +91,7 @@
         }
       ]
     },
-    "copyright": "تمامی حقوق محفوظ است © {year} | ایرفلو سیستم",
-    "termsLink": "شرایط استفاده"
+    "copyright": "تمامی حقوق محفوظ است © {year} | ایرفلو سیستم"
   },
   "en": {
     "company": {
@@ -151,23 +150,23 @@
         "id": "solutions",
         "title": "Solutions",
         "links": [
-          { "label": "Office Buildings", "href": "/solutions/office" },
-          { "label": "Commercial Centers", "href": "/solutions/commercial" },
-          { "label": "Residential", "href": "/solutions/residential" },
-          { "label": "Industrial", "href": "/solutions/industrial" },
-          { "label": "Healthcare", "href": "/solutions/healthcare" },
-          { "label": "Public Facilities", "href": "/solutions/public" }
+          { "label": "Office Buildings", "href": "/projects?category=office" },
+          { "label": "Commercial Centers", "href": "/projects?category=commercial" },
+          { "label": "Hotels", "href": "/projects?category=hotel" },
+          { "label": "Industrial", "href": "/projects?category=industrial" },
+          { "label": "Healthcare", "href": "/projects?category=healthcare" },
+          { "label": "Education", "href": "/projects?category=education" }
         ]
       },
       {
         "id": "resources",
         "title": "Resources",
         "links": [
-          { "label": "Catalogs", "href": "/resources/catalog" },
-          { "label": "Technical Drawings", "href": "/resources/technical" },
-          { "label": "Articles", "href": "/resources/articles" },
-          { "label": "Standards", "href": "/resources/standards" },
-          { "label": "Videos", "href": "/resources/videos" }
+          { "label": "Catalogs", "href": "/resources#catalog" },
+          { "label": "Technical Drawings", "href": "/resources#cad" },
+          { "label": "Installation Guide", "href": "/resources#install" },
+          { "label": "Standards", "href": "/resources#standards" },
+          { "label": "BIM Models", "href": "/resources#bim" }
         ]
       }
     ],
@@ -189,7 +188,6 @@
         }
       ]
     },
-    "copyright": "All rights reserved © {year} | Airflow System",
-    "termsLink": "Terms of Use"
+    "copyright": "All rights reserved © {year} | Airflow System"
   }
 }
