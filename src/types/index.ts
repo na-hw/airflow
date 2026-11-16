@@ -194,6 +194,36 @@ export interface ResourcesData {
   items: Resource[];
 }
 
+// ─── Contact ──────────────────────────────────────────────────
+export interface ContactField {
+  id: string;
+  label: string;
+  type: string;
+  placeholder: string;
+  required: boolean;
+}
+
+export interface ContactInfo {
+  icon: string;
+  label: string;
+  value: string;
+  href?: string;
+}
+
+export interface ContactData {
+  section: { tag: string; title: string; subtitle: string };
+  contactDetails: ContactInfo[];
+  fields: ContactField[];
+  projectTypes: string[];
+  submit: {
+    label: string;
+    loading: string;
+    success: string;
+    error: string;
+    newMessage: string;
+  };
+}
+
 // ─── Footer ───────────────────────────────────────────────────
 export interface FooterLink {
   label: string;
@@ -216,7 +246,7 @@ export interface Social {
 export interface FooterData {
   company: { name: string; subtitle: string; tagline: string; socials: Social[] };
   columns: FooterColumn[];
-  contact: { title: string; items: { icon: string; label: string; value: string; href?: string }[] };
+  contact: { title: string; items: ContactInfo[] };
   copyright: string;
   termsLink: string;
 }

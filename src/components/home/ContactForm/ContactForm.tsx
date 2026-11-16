@@ -13,34 +13,15 @@ import {
   type ContactFormValues as FormValues,
 } from "@/lib/contactSchema";
 import { useLanguage } from "@/context/LanguageContext";
+import type { ContactData } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import styles from "./ContactForm.module.css";
 
-type ContactField = {
-  id: string;
-  label: string;
-  type: string;
-  placeholder: string;
-  required: boolean;
-};
-
 interface ContactFormProps {
-  data: {
-    section: { tag: string; title: string; subtitle: string };
-    contactDetails: { icon: string; label: string; value: string }[];
-    fields: ContactField[];
-    projectTypes: string[];
-    submit: {
-      label: string;
-      loading: string;
-      success: string;
-      error: string;
-      newMessage: string;
-    };
-  };
+  data: ContactData;
 }
 
 export default function ContactForm({ data }: ContactFormProps) {

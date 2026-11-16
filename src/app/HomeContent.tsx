@@ -14,6 +14,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import type {
   Bilingual,
   BestSellersData,
+  ContactData,
   HeroData,
   PartnersData,
   ProductCategoriesData,
@@ -33,37 +34,6 @@ import projectsRaw from "@/data/projects.json";
 import resourcesRaw from "@/data/resources.json";
 import statisticsRaw from "@/data/statistics.json";
 import whyUsRaw from "@/data/whyus.json";
-
-
-type ContactField = {
-  id: string;
-  label: string;
-  type: string;
-  placeholder: string;
-  required: boolean;
-};
-
-type ContactDetail = {
-  icon: string;
-  label: string;
-  value: string;
-  href?: string;
-};
-
-type ContactData = {
-  section: { tag: string; title: string; subtitle: string };
-  contactDetails: ContactDetail[];
-  fields: ContactField[];
-  projectTypes: string[];
-  fileInfo: { label: string; hint: string };
-  submit: {
-    label: string;
-    loading: string;
-    success: string;
-    error: string;
-    newMessage: string;
-  };
-};
 
 export default function HomeContent() {
   const { lang } = useLanguage();
