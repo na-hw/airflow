@@ -32,7 +32,7 @@ export default function WhatsAppButton() {
   }, []);
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} data-floating-action>
       <a
         className={`${styles.bubble} ${showBubble ? styles.bubbleVisible : ""}`}
         href={`https://wa.me/${SITE_CONFIG.whatsapp}`}

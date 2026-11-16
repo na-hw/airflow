@@ -14,6 +14,8 @@
 html {
   direction: rtl;
   scroll-behavior: smooth;
+  /* Anchor jumps and focused form fields land below the fixed header. */
+  scroll-padding-top: calc(var(--header-height) + var(--space-4));
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   font-size: 16px;
@@ -142,4 +144,13 @@ input, textarea, select {
   max-width: var(--container-max);
   margin-inline: auto;
   padding-inline: var(--section-padding-x);
+}
+
+/* On phones the floating WhatsApp / scroll-to-top buttons would cover form
+   fields and the submit button while the visitor is typing. */
+@media (max-width: 768px) {
+  body:has(input:focus, textarea:focus, select:focus) [data-floating-action] {
+    opacity: 0;
+    pointer-events: none;
+  }
 }

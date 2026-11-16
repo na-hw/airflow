@@ -24,6 +24,7 @@ export default function ScrollToTop() {
       className={`${styles.btn} ${visible ? styles.visible : ''}`}
       onClick={scrollUp}
       aria-label={LABEL[lang]}
+      data-floating-action
     >
       <Icon name="chevron-up" size={20} />
     </button>
