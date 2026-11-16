@@ -1,7 +1,7 @@
 import Field, { fieldErrorId } from "@/components/shared/Field/Field";
 import Icon from "@/components/shared/Icon/Icon";
 import { useId } from "react";
-import styles from "./formField.module.css";
+import styles from "./FormField.module.css";
 
 interface SelectOption {
   value: string;
