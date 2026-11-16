@@ -2,6 +2,8 @@ import ProductDetailContent from "./ProductDetailContent";
 import productsDetail from "@/data/products-detail.json";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { SITE_CONFIG } from "@/constants";
+import { pageMetadata, toJsonLd } from "@/lib/seo";
 
 type Slug = keyof (typeof productsDetail)["fa"];
 
@@ -19,10 +21,12 @@ export async function generateMetadata({
   const { slug } = await params;
   if (!isSlug(slug)) return {};
   const product = productsDetail.fa[slug];
-  return {
+  return pageMetadata({
     title: `${product.name} ${product.model}`,
     description: product.description,
-  };
+    path: `/products/${slug}`,
+    image: product.images[0]?.src,
+  });
 }
 
 export default async function ProductDetailPage({
@@ -33,11 +37,30 @@ export default async function ProductDetailPage({
   const { slug } = await params;
   if (!isSlug(slug)) notFound();
 
+  const product = productsDetail.fa[slug];
+  // Lets search engines show the product as a rich result.
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: `${product.name} ${product.model}`,
+    model: product.model,
+    description: product.description,
+    image: product.images.map((image) => `${SITE_CONFIG.url}${image.src}`),
+    url: `${SITE_CONFIG.url}/products/${slug}`,
+    brand: { "@type": "Brand", name: SITE_CONFIG.name },
+  };
+
   // Only this product's entries reach the client, not the whole catalog.
   return (
-    <ProductDetailContent
-      slug={slug}
-      product={{ fa: productsDetail.fa[slug], en: productsDetail.en[slug] }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: toJsonLd(productJsonLd) }}
+      />
+      <ProductDetailContent
+        slug={slug}
+        product={{ fa: product, en: productsDetail.en[slug] }}
+      />
+    </>
   );
 }

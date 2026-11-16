@@ -1,11 +1,14 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import { getAllProductCardTiles } from '@/lib/productCardInfo';
 import ProductsContent from './ProductsContent';
 
-export const metadata: Metadata = {
-  title: 'Products | محصولات',
-  description: 'A complete range of air distribution products — diffusers, dampers, control equipment and accessories.',
-};
+export const metadata: Metadata = pageMetadata({
+  title: 'محصولات',
+  description:
+    'مجموعه کامل محصولات توزیع هوا: دریچه‌های سقفی و خطی، دمپرها، کلاهک دودکش، دریچه فن‌کویل و تجهیزات جانبی.',
+  path: '/products',
+});
 
 export default async function ProductsPage({
   searchParams,

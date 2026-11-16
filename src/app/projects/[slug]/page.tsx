@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import ProjectDetailContent, { type ProjectDetail } from './ProjectDetailContent';
 import projectsDetail from '@/data/projects-detail.json';
+import { pageMetadata } from '@/lib/seo';
 
 type Slug = keyof (typeof projectsDetail)['fa'];
 
@@ -26,11 +27,13 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { slug } = await params;
   if (!isSlug(slug)) return {};
-  const project = projectsDetail.fa[slug];
-  return {
+  const project = withExistingImage(projectsDetail.fa[slug]);
+  return pageMetadata({
     title: project.title,
     description: project.description,
-  };
+    path: `/projects/${slug}`,
+    image: project.image,
+  });
 }
 
 export default async function ProjectDetailPage(

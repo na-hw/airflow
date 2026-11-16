@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import ResourcesContent from './ResourcesContent';
 
-export const metadata: Metadata = {
-  title: 'Resources | منابع فنی',
-  description: 'Easy access to catalogs, technical files, and educational resources from Airflow System.',
-};
+export const metadata: Metadata = pageMetadata({
+  title: 'منابع فنی',
+  description:
+    'دانلود کاتالوگ محصولات، فایل‌های CAD، مدل‌های BIM، راهنمای نصب و استانداردهای ایرفلو سیستم.',
+  path: '/resources',
+});
 
 export default function ResourcesPage() {
   return <ResourcesContent />;
