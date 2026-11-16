@@ -8,8 +8,9 @@ import { useEffect, useState } from "react";
 import styles from "./WhatsAppButton.module.css";
 import type { Bilingual } from "@/types";
 
-const SHOW_INTERVAL_MS = 10000;
-const SHOW_DURATION_MS = 3000;
+const SHOW_DELAY_MS = 8000;
+const SHOW_DURATION_MS = 4000;
+const SEEN_KEY = "whatsapp-bubble-seen";
 
 type WhatsappWidgetCopy = { bubble: string; ariaLabel: string };
 
@@ -18,15 +19,26 @@ export default function WhatsAppButton() {
   const t = (contactRaw as unknown as Bilingual<{ whatsappWidget: WhatsappWidgetCopy }>)[lang].whatsappWidget;
   const [showBubble, setShowBubble] = useState(false);
 
+  // A single, delayed hint per visit: repeating it would nag and, on phones,
+  // keep covering the content under it.
   useEffect(() => {
+    try {
+      if (sessionStorage.getItem(SEEN_KEY)) return;
+    } catch {
+      // Storage unavailable: still show the hint once for this page view.
+    }
+
     let hideTimeout: ReturnType<typeof setTimeout> | undefined;
-    const interval = setInterval(() => {
+    const showTimeout = setTimeout(() => {
       setShowBubble(true);
+      try {
+        sessionStorage.setItem(SEEN_KEY, "1");
+      } catch {}
       hideTimeout = setTimeout(() => setShowBubble(false), SHOW_DURATION_MS);
-    }, SHOW_INTERVAL_MS);
+    }, SHOW_DELAY_MS);
 
     return () => {
-      clearInterval(interval);
+      clearTimeout(showTimeout);
       clearTimeout(hideTimeout);
     };
   }, []);
