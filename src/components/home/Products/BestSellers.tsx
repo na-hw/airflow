@@ -8,7 +8,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import ProductCard from "./ProductCard";
+import ProductCard from "@/components/shared/ProductCard/ProductCard";
 import styles from "./Products.module.css";
 
 import "swiper/css";
@@ -74,7 +74,7 @@ export default function BestSellers({ data }: BestSellersProps) {
           >
             {data.items.map((product) => (
               <SwiperSlide key={product.id}>
-                <ProductCard product={product} />
+                <ProductCard product={product} variant="compact" />
               </SwiperSlide>
             ))}
           </Swiper>

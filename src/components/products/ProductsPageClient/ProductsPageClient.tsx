@@ -11,8 +11,8 @@ import { useLanguage } from "@/context/LanguageContext";
 import type { ProductCardTilesById } from "@/lib/productCardInfo";
 import { AnimatePresence, motion } from "framer-motion";
 import { useMemo, useState } from "react";
-import type { ProductItem } from "./ProductCard";
-import ProductCard from "./ProductCard";
+import ProductCard from "@/components/shared/ProductCard/ProductCard";
+import type { Product } from "@/types";
 import styles from "./ProductsPageClient.module.css";
 
 const COPY = {
@@ -30,7 +30,7 @@ interface Props {
   breadcrumb: BreadcrumbItem[];
   pageTitle: string;
   tabs: TabItem[];
-  items: ProductItem[];
+  items: Product[];
   cta: Cta;
   cardTiles: ProductCardTilesById;
   initialCategory?: string;
@@ -68,9 +68,9 @@ export default function ProductsPageClient({
   // would allocate a fresh array each render and defeat it.
   const normalizedQuery = query.trim().toLocaleLowerCase();
   const filtered = useMemo(() => {
-    const matchesCategory = (p: ProductItem) =>
+    const matchesCategory = (p: Product) =>
       activeTab === "all" || p.category === activeTab;
-    const matchesQuery = (p: ProductItem) =>
+    const matchesQuery = (p: Product) =>
       !normalizedQuery ||
       `${p.name} ${p.model} ${p.series} ${p.id}`
         .toLocaleLowerCase()

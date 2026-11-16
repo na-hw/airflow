@@ -1,0 +1,197 @@
+/* ─── Shared ───────────────────────────────────────────────── */
+.card {
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-slow);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-card);
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glow-primary), var(--shadow-md);
+  border-color: var(--color-border-primary);
+}
+
+.imgWrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.img {
+  transition: transform var(--transition-slow);
+}
+
+.card:hover .img {
+  transform: scale(1.05);
+}
+
+.placeholder {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  inset: 0;
+}
+
+.badge {
+  position: absolute;
+  top: var(--space-3);
+  inset-inline-start: var(--space-3);
+  z-index: 1;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  background: var(--card-body-bg);
+  text-align: start;
+}
+
+.name {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-snug);
+}
+
+.series {
+  color: var(--color-primary-light);
+  font-weight: var(--font-medium);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wider);
+}
+
+.cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-2);
+  transition: all var(--transition-fast);
+  margin-top: var(--space-3);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-4);
+  color: var(--color-primary-light);
+  font-weight: var(--font-medium);
+  font-size: var(--text-sm);
+  font-family: var(--font-primary);
+  text-align: center;
+}
+
+.card:hover .cta {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* ─── Compact: home page carousel ──────────────────────────── */
+.compact {
+  height: 100%;
+}
+
+.compact .img {
+  object-fit: cover;
+}
+
+.compact .placeholder {
+  background: var(--color-bg-secondary);
+  padding: var(--space-4);
+}
+
+.overlay {
+  position: absolute;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  inset: 0;
+  background: linear-gradient(to top, rgba(6, 13, 26, 0.6) 0%, transparent 50%);
+}
+
+.card:hover .overlay {
+  opacity: 1;
+}
+
+.compact .body {
+  gap: var(--space-1);
+  padding: var(--space-4) var(--space-5);
+}
+
+.compact .name {
+  font-size: var(--text-sm);
+}
+
+/* ─── Detailed: products grid ──────────────────────────────── */
+.detailed .imgWrap {
+  background: var(--color-bg-secondary);
+}
+
+.detailed .img {
+  padding: var(--space-4);
+  object-fit: contain;
+}
+
+.detailed .placeholder {
+  padding: var(--space-6);
+}
+
+.detailed .body {
+  flex: 1;
+  gap: var(--space-2);
+  padding: var(--space-5);
+}
+
+.detailed .name {
+  font-size: var(--text-lg);
+}
+
+/* Model series are Latin text, so they always read left to right. */
+.detailed .series {
+  direction: ltr;
+  text-align: left;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  outline: 2px solid var(--tile-bg);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-2);
+  text-align: center;
+}
+
+.tileIcon {
+  margin-bottom: var(--space-1);
+  color: var(--color-primary-light);
+}
+
+.tileTitle {
+  color: var(--color-text-primary);
+  font-weight: var(--font-semibold);
+  font-size: var(--text-xs);
+  line-height: var(--leading-snug);
+  hyphens: none;
+  text-wrap: balance;
+}
+
+.tileDetail {
+  color: var(--color-text-muted);
+  font-size: 0.6875rem;
+  line-height: var(--leading-snug);
+  hyphens: none;
+  text-wrap: balance;
+}
