@@ -65,22 +65,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: `(function(){try{var l=localStorage.getItem('lang');var en=l==='en';document.documentElement.setAttribute('lang',en?'en':'fa');document.documentElement.setAttribute('dir',en?'ltr':'rtl');}catch(e){}})();`,
           }}
         />
-        <Script
-          id="image-protect"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `(function(){
-              document.addEventListener('contextmenu', function(e){ if(e.target && e.target.tagName === 'IMG') e.preventDefault(); });
-              document.addEventListener('dragstart', function(e){ if(e.target && e.target.tagName === 'IMG') e.preventDefault(); });
-              document.addEventListener('keydown', function(e){
-                var k = e.key;
-                if (k === 'F12') { e.preventDefault(); return; }
-                if (e.ctrlKey && e.shiftKey && (k === 'I' || k === 'i' || k === 'J' || k === 'j' || k === 'C' || k === 'c')) { e.preventDefault(); return; }
-                if (e.ctrlKey && (k === 'u' || k === 'U')) { e.preventDefault(); return; }
-              });
-            })();`,
-          }}
-        />
         <ThemeProvider>
           <LanguageProvider>
             <MotionPreferences>
