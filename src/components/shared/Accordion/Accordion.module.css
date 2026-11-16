@@ -54,3 +54,43 @@
   font-size: var(--text-caption);
   line-height: var(--leading-relaxed);
 }
+
+/* ─── Cards variant ─────────────────────────────────────────── */
+.cards {
+  gap: var(--space-3);
+  border-top: none;
+}
+
+.cards .item {
+  overflow: hidden;
+  transition: border-color var(--transition-fast);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+}
+
+.cards .itemOpen {
+  border-color: var(--color-border-primary);
+}
+
+.cards .trigger {
+  transition: color var(--transition-fast);
+  padding: var(--space-4) var(--space-5);
+}
+
+.cards .trigger:hover {
+  color: var(--color-primary-light);
+}
+
+.cards .triggerTitle {
+  font-size: var(--text-sm);
+}
+
+.cards .chevronOpen {
+  color: var(--color-text-muted);
+}
+
+.cards .content {
+  padding: 0 var(--space-5) var(--space-4);
+  font-size: var(--text-sm);
+}

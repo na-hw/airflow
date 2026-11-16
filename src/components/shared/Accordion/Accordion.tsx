@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import type { ReactNode } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Icon from '@/components/shared/Icon/Icon';
@@ -15,10 +15,13 @@ export interface AccordionItem {
 interface AccordionProps {
   items: AccordionItem[];
   allowMultiple?: boolean;
+  /** `divided`: rows separated by lines. `cards`: each item in its own bordered card. */
+  variant?: 'divided' | 'cards';
 }
 
-export default function Accordion({ items, allowMultiple = false }: AccordionProps) {
+export default function Accordion({ items, allowMultiple = false, variant = 'divided' }: AccordionProps) {
   const [openIds, setOpenIds] = useState<string[]>([]);
+  const baseId = useId();
 
   const toggle = (id: string) => {
     setOpenIds((prev) => {
@@ -31,15 +34,17 @@ export default function Accordion({ items, allowMultiple = false }: AccordionPro
   };
 
   return (
-    <div className={styles.accordion}>
+    <div className={`${styles.accordion} ${styles[variant]}`}>
       {items.map((item) => {
         const isOpen = openIds.includes(item.id);
+        const panelId = `${baseId}-${item.id}`;
         return (
-          <div key={item.id} className={styles.item}>
+          <div key={item.id} className={[styles.item, isOpen ? styles.itemOpen : ''].filter(Boolean).join(' ')}>
             <button
               type="button"
               className={styles.trigger}
               aria-expanded={isOpen}
+              aria-controls={panelId}
               onClick={() => toggle(item.id)}
             >
               <span className={styles.triggerTitle}>{item.title}</span>
@@ -52,6 +57,7 @@ export default function Accordion({ items, allowMultiple = false }: AccordionPro
             <AnimatePresence initial={false}>
               {isOpen && (
                 <motion.div
+                  id={panelId}
                   className={styles.contentWrap}
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: 'auto', opacity: 1 }}

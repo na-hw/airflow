@@ -1,6 +1,7 @@
 "use client";
 
 import type { BreadcrumbItem } from "@/components/shared/Breadcrumb/Breadcrumb";
+import Accordion from "@/components/shared/Accordion/Accordion";
 import Breadcrumb from "@/components/shared/Breadcrumb/Breadcrumb";
 import Button from "@/components/shared/Button/Button";
 import Container from "@/components/shared/Container/Container";
@@ -9,9 +10,7 @@ import ImageGallery from "@/components/shared/ImageGallery/ImageGallery";
 import Tabs from "@/components/shared/Tabs/Tabs";
 import { SITE_CONFIG } from "@/constants";
 import { useLanguage } from "@/context/LanguageContext";
-import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
 import styles from "./ProductDetailClient.module.css";
 
 /* ─── Types ───────────────────────────────────────────────── */
@@ -78,7 +77,6 @@ export default function ProductDetailClient({
   downloadLabel,
 }: Props) {
   const { lang } = useLanguage();
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const half = Math.ceil(specs.length / 2);
   const specsLeft = specs.slice(0, half);
@@ -219,41 +217,14 @@ export default function ProductDetailClient({
 
                 {activeTab === "faq" && (
                   <div className={styles.faqPane}>
-                    {faq.map((item, i) => (
-                      <div key={i} className={styles.faqItem}>
-                        <button
-                          type="button"
-                          className={[
-                            styles.faqQuestion,
-                            openFaq === i ? styles.faqOpen : "",
-                          ]
-                            .filter(Boolean)
-                            .join(" ")}
-                          aria-expanded={openFaq === i}
-                          aria-controls={`faq-answer-${i}`}
-                          onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                        >
-                          <span>{item.question}</span>
-                          <span className={styles.faqChevron}>
-                            <Icon name="chevron-down" size={18} />
-                          </span>
-                        </button>
-                        <AnimatePresence>
-                          {openFaq === i && (
-                            <motion.div
-                              id={`faq-answer-${i}`}
-                              initial={{ height: 0, opacity: 0 }}
-                              animate={{ height: "auto", opacity: 1 }}
-                              exit={{ height: 0, opacity: 0 }}
-                              transition={{ duration: 0.22 }}
-                              style={{ overflow: "hidden" }}
-                            >
-                              <p className={styles.faqAnswer}>{item.answer}</p>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-                    ))}
+                    <Accordion
+                      variant="cards"
+                      items={faq.map((item, i) => ({
+                        id: String(i),
+                        title: item.question,
+                        content: item.answer,
+                      }))}
+                    />
                   </div>
                 )}
               </>
