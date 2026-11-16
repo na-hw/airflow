@@ -81,9 +81,12 @@
 /* Responsive */
 @media (max-width: 1280px) { .grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 768px)  { .grid { grid-template-columns: repeat(2, 1fr); } }
+/* Phones: two compact columns instead of five full-width rows; the odd
+   last figure spans both columns. */
 @media (max-width: 480px)  {
-  .grid { grid-template-columns: 1fr; }
-  .item { flex-direction: row; text-align: start; gap: var(--space-4); }
-  .itemContent { align-items: flex-start; }
-  .valueWrap { justify-content: flex-start; }
+  .grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-3); }
+  .item { gap: var(--space-3); padding: var(--space-5) var(--space-3); }
+  .item:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .iconWrap { width: 48px; height: 48px; }
+  .svgWrap { width: 22px; height: 22px; }
 }
