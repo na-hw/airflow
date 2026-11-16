@@ -180,12 +180,12 @@
           "value": "Chat on WhatsApp",
           "href": "https://wa.me/989123947902"
         },
-        { "icon": "phone", "label": "Phone", "value": "021-33585780" },
+        { "icon": "phone", "label": "Phone", "value": "+98 21 3358 5780" },
         { "icon": "mail", "label": "Email", "value": "info@airflowsystem.ir" },
         {
           "icon": "location",
           "label": "Address",
-          "value": "Tehran, Shahran, Motahari St., Sattar Khan St., No. 123"
+          "value": "No. 123, Sattar Khan St., Motahari St., Shahran, Tehran, Iran"
         }
       ]
     },

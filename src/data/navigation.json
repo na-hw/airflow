@@ -32,9 +32,9 @@
       "href": "/"
     },
     "topbar": {
-      "phone": "021-33585780",
+      "phone": "+98 21 3358 5780",
       "email": "info@airflowsystem.ir",
-      "address": "Tehran, Shahran, Motahari St., Sattar Khan St., No. 123"
+      "address": "No. 123, Sattar Khan St., Motahari St., Shahran, Tehran, Iran"
     },
     "items": [
       { "id": "home",      "label": "Home",      "href": "/",          "active": true  },

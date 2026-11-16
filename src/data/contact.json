@@ -48,11 +48,11 @@
       "subtitle": "Submit your project details and our experts will get in touch with you as soon as possible."
     },
     "contactDetails": [
-      { "icon": "phone",    "label": "Phone",           "value": "021-33585780" },
+      { "icon": "phone",    "label": "Phone",           "value": "+98 21 3358 5780" },
       { "icon": "whatsapp", "label": "WhatsApp",         "value": "Chat on WhatsApp", "href": "https://wa.me/989123947902" },
       { "icon": "mail",     "label": "Email",            "value": "info@airflowsystem.ir" },
-      { "icon": "location", "label": "Address",          "value": "Tehran, Shahran, Motahari St., Sattar Khan St., No. 123" },
-      { "icon": "clock",    "label": "Working Hours",    "value": "Sat–Wed 8 AM–5 PM | Thu 8 AM–1 PM" }
+      { "icon": "location", "label": "Address",          "value": "No. 123, Sattar Khan St., Motahari St., Shahran, Tehran, Iran" },
+      { "icon": "clock",    "label": "Working Hours",    "value": "Sat–Wed 8 AM–5 PM | Thu 8 AM–1 PM (Tehran time)" }
     ],
     "fields": [
       { "id": "name",        "label": "Full Name",               "type": "text",     "placeholder": "Full Name",                     "required": true  },
