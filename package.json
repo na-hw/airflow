@@ -1,5 +1,5 @@
 {
-  "name": "mein-projekt",
+  "name": "airflow-system",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -21,13 +21,11 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
-    "tailwindcss": "^4",
     "typescript": "^5"
   }
 }
